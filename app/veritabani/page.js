@@ -144,28 +144,28 @@ export default function VeritabaniPage() {
       }
     ],
     documents: [
-      { id: "TR-TUA-2026-01", name: lang === 'en' ? "Lunar Research Program (AYAP-1) Main Feasibility and Route Report" : "Ay Araştırma Programı (AYAP-1) Ana Fizibilite ve Rota Raporu", category: lang === 'en' ? "Strategic Plan" : "Stratejik Plan", date: "04.09.2026", size: "14.2 MB", format: "PDF" },
-      { id: "TR-TUA-2026-02", name: lang === 'en' ? "Quantum Key Distribution (QKD) Encryption Specification" : "Kuantum Anahtar Dağıtımı (QKD) Şifreleme Şartnamesi", category: lang === 'en' ? "Technical Spec" : "Teknik Şartname", date: "28.08.2026", size: "4.8 MB", format: "PDF" },
-      { id: "TR-TUA-2026-03", name: lang === 'en' ? "High Altitude Hybrid Rocket Engine Safety Procedures" : "Yüksek İrtifa Hibrit Roket Motoru Güvenlik Prosedürleri", category: lang === 'en' ? "Engineering" : "Mühendislik", date: "15.08.2026", size: "8.5 MB", format: "PDF" },
-      { id: "TR-TUA-2026-04", name: lang === 'en' ? "Gölbaşı Ground Station S/X Band Antenna Calibration Guide" : "Gölbaşı Yer İstasyonu S/X Band Anten Kalibrasyon Kılavuzu", category: lang === 'en' ? "Operations" : "Operasyon", date: "01.08.2026", size: "6.1 MB", format: "PDF" },
-      { id: "TR-TUA-2026-05", name: lang === 'en' ? "National Observation Satellite Orbit Correction Maneuver Analysis" : "Millî Gözlem Uydusu Yörünge Düzeltme Manevra Analizi", category: lang === 'en' ? "Analysis Report" : "Analiz Raporu", date: "20.07.2026", size: "11.4 MB", format: "PDF" },
-      { id: "TR-TUA-2026-06", name: lang === 'en' ? "International Space Station Scientific Experiment Protocols" : "Uluslararası Uzay İstasyonu Bilimsel Deney Protokolleri", category: lang === 'en' ? "Scientific" : "Bilimsel", date: "10.07.2026", size: "9.7 MB", format: "PDF" }
+      { id: "TR-TUA-2026-01", name: lang === 'en' ? "Lunar Research Program (AYAP-1) Main Feasibility and Route Report" : "Ay Araştırma Programı (AYAP-1) Ana Fizibilite ve Rota Raporu", category: lang === 'en' ? "Strategic Plan" : "Stratejik Plan", date: "04.09.2026", size: "14.2 MB", format: "PDF", fileUrl: "/downloads/TR-TUA-2026-01.pdf" },
+      { id: "TR-TUA-2026-02", name: lang === 'en' ? "Quantum Key Distribution (QKD) Encryption Specification" : "Kuantum Anahtar Dağıtımı (QKD) Şifreleme Şartnamesi", category: lang === 'en' ? "Technical Spec" : "Teknik Şartname", date: "28.08.2026", size: "4.8 MB", format: "PDF", fileUrl: "/downloads/TR-TUA-2026-02.pdf" },
+      { id: "TR-TUA-2026-03", name: lang === 'en' ? "High Altitude Hybrid Rocket Engine Safety Procedures" : "Yüksek İrtifa Hibrit Roket Motoru Güvenlik Prosedürleri", category: lang === 'en' ? "Engineering" : "Mühendislik", date: "15.08.2026", size: "8.5 MB", format: "PDF", fileUrl: "/downloads/TR-TUA-2026-03.pdf" },
+      { id: "TR-TUA-2026-04", name: lang === 'en' ? "Gölbaşı Ground Station S/X Band Antenna Calibration Guide" : "Gölbaşı Yer İstasyonu S/X Band Anten Kalibrasyon Kılavuzu", category: lang === 'en' ? "Operations" : "Operasyon", date: "01.08.2026", size: "6.1 MB", format: "PDF", fileUrl: "/downloads/TR-TUA-2026-04.pdf" },
+      { id: "TR-TUA-2026-05", name: lang === 'en' ? "National Observation Satellite Orbit Correction Maneuver Analysis" : "Millî Gözlem Uydusu Yörünge Düzeltme Manevra Analizi", category: lang === 'en' ? "Analysis Report" : "Analiz Raporu", date: "20.07.2026", size: "11.4 MB", format: "PDF", fileUrl: "/downloads/TR-TUA-2026-05.pdf" },
+      { id: "TR-TUA-2026-06", name: lang === 'en' ? "International Space Station Scientific Experiment Protocols" : "Uluslararası Uzay İstasyonu Bilimsel Deney Protokolleri", category: lang === 'en' ? "Scientific" : "Bilimsel", date: "10.07.2026", size: "9.7 MB", format: "PDF", fileUrl: "/downloads/TR-TUA-2026-06.pdf" }
     ],
     videos: [
-      { id: "VID-TST-301", name: lang === 'en' ? "50 kN Hybrid Rocket Engine Static Firing Test (Full Duration)" : "50 kN Hibrit Roket Motoru Statik Ateşleme Testi (Tam Süre)", category: lang === 'en' ? "Test Record" : "Test Kaydı", date: "15.08.2026", size: "1.2 GB", format: "MP4 (4K)" },
-      { id: "VID-TST-302", name: lang === 'en' ? "TÜRKSAT-6A Structural Vibration and Vibe Test Simulation" : "TÜRKSAT-6A Yapısal Titreşim ve Vibe Testi Simülasyonu", category: lang === 'en' ? "Engineering" : "Mühendislik", date: "10.07.2026", size: "850 MB", format: "MP4 (1080p)" },
-      { id: "VID-TST-303", name: lang === 'en' ? "Ankara Gölbaşı Main Antenna Automation and Signal Locking Moment" : "Ankara Gölbaşı Ana Anten Otomasyon ve Sinyal Kilitlenme Anı", category: lang === 'en' ? "System Record" : "Sistem Kaydı", date: "01.07.2026", size: "420 MB", format: "MP4 (1080p)" },
-      { id: "VID-TST-304", name: lang === 'en' ? "Clean Room Satellite Integration and Mechanical Arm Assembly Process" : "Temiz Oda Uydu Entegrasyon ve Mekanik Kol Montaj Süreci", category: lang === 'en' ? "Integration" : "Entegrasyon", date: "18.06.2026", size: "1.5 GB", format: "MP4 (4K)" },
-      { id: "VID-TST-305", name: lang === 'en' ? "High Altitude Pressure Chamber Valve Tests and Durability Analysis" : "Yüksek İrtifa Basınç Odası Valf Testleri ve Dayanım Analizi", category: lang === 'en' ? "Test Record" : "Test Kaydı", date: "02.06.2026", size: "640 MB", format: "MP4 (1080p)" },
-      { id: "VID-TST-306", name: lang === 'en' ? "Celestial Events Observation Telescope Automatic Positioning Test" : "Gök Olayları Gözlem Teleskobu Otomatik Konumlanma Testi", category: lang === 'en' ? "Optical Test" : "Optik Test", date: "15.05.2026", size: "510 MB", format: "MP4 (1080p)" }
+      { id: "VID-TST-301", name: lang === 'en' ? "50 kN Hybrid Rocket Engine Static Firing Test (Full Duration)" : "50 kN Hibrit Roket Motoru Statik Ateşleme Testi (Tam Süre)", category: lang === 'en' ? "Test Record" : "Test Kaydı", date: "15.08.2026", size: "1.2 GB", format: "MP4 (4K)", fileUrl: "/downloads/VID-TST-301.mp4" },
+      { id: "VID-TST-302", name: lang === 'en' ? "TÜRKSAT-6A Structural Vibration and Vibe Test Simulation" : "TÜRKSAT-6A Yapısal Titreşim ve Vibe Testi Simülasyonu", category: lang === 'en' ? "Engineering" : "Mühendislik", date: "10.07.2026", size: "850 MB", format: "MP4 (1080p)", fileUrl: "/downloads/VID-TST-302.mp4" },
+      { id: "VID-TST-303", name: lang === 'en' ? "Ankara Gölbaşı Main Antenna Automation and Signal Locking Moment" : "Ankara Gölbaşı Ana Anten Otomasyon ve Sinyal Kilitlenme Anı", category: lang === 'en' ? "System Record" : "Sistem Kaydı", date: "01.07.2026", size: "420 MB", format: "MP4 (1080p)", fileUrl: "/downloads/VID-TST-303.mp4" },
+      { id: "VID-TST-304", name: lang === 'en' ? "Clean Room Satellite Integration and Mechanical Arm Assembly Process" : "Temiz Oda Uydu Entegrasyon ve Mekanik Kol Montaj Süreci", category: lang === 'en' ? "Integration" : "Entegrasyon", date: "18.06.2026", size: "1.5 GB", format: "MP4 (4K)", fileUrl: "/downloads/VID-TST-304.mp4" },
+      { id: "VID-TST-305", name: lang === 'en' ? "High Altitude Pressure Chamber Valve Tests and Durability Analysis" : "Yüksek İrtifa Basınç Odası Valf Testleri ve Dayanım Analizi", category: lang === 'en' ? "Test Record" : "Test Kaydı", date: "02.06.2026", size: "640 MB", format: "MP4 (1080p)", fileUrl: "/downloads/VID-TST-305.mp4" },
+      { id: "VID-TST-306", name: lang === 'en' ? "Celestial Events Observation Telescope Automatic Positioning Test" : "Gök Olayları Gözlem Teleskobu Otomatik Konumlanma Testi", category: lang === 'en' ? "Optical Test" : "Optik Test", date: "15.05.2026", size: "510 MB", format: "MP4 (1080p)", fileUrl: "/downloads/VID-TST-306.mp4" }
     ],
     datasets: [
-      { id: "DAT-SET-501", name: lang === 'en' ? "Van Allen Radiation Belt Time Series Density Matrix" : "Van Allen Radyasyon Kuşağı Zaman Serisi Yoğunluk Matrisi", category: lang === 'en' ? "Scientific Data" : "Bilimsel Veri", date: "06.09.2026", size: "45 MB", format: "CSV" },
-      { id: "DAT-SET-502", name: lang === 'en' ? "GÖKTÜRK-3 Two-Line Elements (TLE Daily Archive)" : "GÖKTÜRK-3 İki Satırlı Yörünge Elemanları (TLE Günlük Arşivi)", category: lang === 'en' ? "Telemetry" : "Telemetri", date: "07.09.2026", size: "2.1 MB", format: "JSON" },
-      { id: "DAT-SET-503", name: lang === 'en' ? "Ankara Ground Station Signal to Noise Ratio (SNR) Records" : "Ankara Yer İstasyonu Sinyal Gürültü Oranı (SNR) Kayıtları", category: lang === 'en' ? "Operational" : "Operasyonel", date: "05.09.2026", size: "88 MB", format: "CSV" },
-      { id: "DAT-SET-504", name: lang === 'en' ? "Solar Storm and Geomagnetic Disturbance Index Database" : "Güneş Fırtınası ve Jeomanyetik Bozulma İndeks Veritabanı", category: lang === 'en' ? "Space Weather" : "Uzay Hava", date: "30.08.2026", size: "34 MB", format: "CSV" },
-      { id: "DAT-SET-505", name: lang === 'en' ? "Hybrid Engine Fuel Pressure and Temperature Sensor Time Series" : "Hibrit Motor Yakıt Basıncı ve Sıcaklık Sensör Zaman Serileri", category: lang === 'en' ? "Engineering" : "Mühendislik", date: "15.08.2026", size: "120 MB", format: "JSON" },
-      { id: "DAT-SET-506", name: lang === 'en' ? "Atmospheric Gas Density and Ionospheric Layer Measurements" : "Atmosferik Gaz Yoğunluğu ve İyonosferik Katman Ölçümleri", category: lang === 'en' ? "Scientific Data" : "Bilimsel Veri", date: "10.08.2026", size: "56 MB", format: "CSV" }
+      { id: "DAT-SET-501", name: lang === 'en' ? "Van Allen Radiation Belt Time Series Density Matrix" : "Van Allen Radyasyon Kuşağı Zaman Serisi Yoğunluk Matrisi", category: lang === 'en' ? "Scientific Data" : "Bilimsel Veri", date: "06.09.2026", size: "45 MB", format: "CSV", fileUrl: "/downloads/DAT-SET-501.csv" },
+      { id: "DAT-SET-502", name: lang === 'en' ? "GÖKTÜRK-3 Two-Line Elements (TLE Daily Archive)" : "GÖKTÜRK-3 İki Satırlı Yörünge Elemanları (TLE Günlük Arşivi)", category: lang === 'en' ? "Telemetry" : "Telemetri", date: "07.09.2026", size: "2.1 MB", format: "JSON", fileUrl: "/downloads/DAT-SET-502.json" },
+      { id: "DAT-SET-503", name: lang === 'en' ? "Ankara Ground Station Signal to Noise Ratio (SNR) Records" : "Ankara Yer İstasyonu Sinyal Gürültü Oranı (SNR) Kayıtları", category: lang === 'en' ? "Operational" : "Operasyonel", date: "05.09.2026", size: "88 MB", format: "CSV", fileUrl: "/downloads/DAT-SET-503.csv" },
+      { id: "DAT-SET-504", name: lang === 'en' ? "Solar Storm and Geomagnetic Disturbance Index Database" : "Güneş Fırtınası ve Jeomanyetik Bozulma İndeks Veritabanı", category: lang === 'en' ? "Space Weather" : "Uzay Hava", date: "30.08.2026", size: "34 MB", format: "CSV", fileUrl: "/downloads/DAT-SET-504.csv" },
+      { id: "DAT-SET-505", name: lang === 'en' ? "Hybrid Engine Fuel Pressure and Temperature Sensor Time Series" : "Hibrit Motor Yakıt Basıncı ve Sıcaklık Sensör Zaman Serileri", category: lang === 'en' ? "Engineering" : "Mühendislik", date: "15.08.2026", size: "120 MB", format: "JSON", fileUrl: "/downloads/DAT-SET-505.json" },
+      { id: "DAT-SET-506", name: lang === 'en' ? "Atmospheric Gas Density and Ionospheric Layer Measurements" : "Atmosferik Gaz Yoğunluğu ve İyonosferik Katman Ölçümleri", category: lang === 'en' ? "Scientific Data" : "Bilimsel Veri", date: "10.08.2026", size: "56 MB", format: "CSV", fileUrl: "/downloads/DAT-SET-506.csv" }
     ]
   };
 
@@ -358,10 +358,14 @@ export default function VeritabaniPage() {
                 </div>
 
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
-                  <button className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all">
+                  <a 
+                    href={item.fileUrl} 
+                    download 
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all"
+                  >
                     <Download className="w-3 h-3 text-slate-400" />
                     {lang === 'en' ? "Download" : "İndir"}
-                  </button>
+                  </a>
                 </div>
 
               </div>

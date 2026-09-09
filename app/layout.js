@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
-import Providers from './components/Providers'; // <-- Eklenen kısım
+import Providers from './components/Providers';
+import Script from 'next/script'; // <-- Script bileşenini import ediyoruz
 import './globals.css';
 
 export const metadata = {
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="tr">
       <body className="bg-black text-white relative">
-        <Providers> {/* <-- Tüm siteyi dil sağlayıcı ile sarmaladık */}
+        <Providers>
           {/* --- index.html'den Alınan Derin Uzay Yıldız Efektleri --- */}
           <div className="space-atmosphere"></div>
           <div className="stars stars-distant"></div>
@@ -57,10 +57,13 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
           
-          {/* Sağ Alt Sabit TUA Yapay Zeka Asistanı */}
-          <AIAssistant />
+          {/* Tidio Yapay Zeka Canlı Destek Asistanı */}
+          <Script 
+            src="//code.tidio.co/dyasctizhnizna8mprgjq8gg3aphduj6.js" 
+            strategy="lazyOnload" 
+          />
         </Providers>
       </body>
     </html>
   );
-} 
+}

@@ -96,16 +96,18 @@ Projenin arka plan mimarisinde verilerin çekildiği, harici servislerden anlık
 * **Kullanıldığı Yer:** `app/veritabani/page.tsx` dosyasının başında ve ilgili servis katmanlarında.
 * **Nasıl Çalışır:** `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` çevre değişkenleri (environment variables) kullanılarak istemci güvenli bir şekilde Supabase bulut sunucusuna bağlanır.
 
-<p align="center">
-  <img src="./public/media/api-code-preview.png" alt="API Entegrasyon Kodu" width="90%" />
-</p>
+<img width="1211" height="774" alt="Ekran görüntüsü 2026-09-10 171638" src="https://github.com/user-attachments/assets/b5765f01-042b-49da-978f-361c73c07aab" />
+
 
 ### 3.  Uzay İstasyonu (ISS) Canlı Konum API Entegrasyonu
 * **Kullanıldığı Yer:** Uzay istasyonunun anlık yörünge ve coğrafi konum verilerini (enlem, boylam) dış kaynaklı API servisleri üzerinden anlık olarak çeken servis bileşeni.
 * **Nasıl Çalışır:** Asenkron veri çekme istekleriyle (fetch/axios) uzay istasyonunun anlık koordinatları arayüze yansıtılır.
 
->  *Buraya ISS konum verisinin çekildiği arayüzün veya kodun ekran görüntüsünü ekleyebilirsin:*
-> `<p align="center"><img src="./public/media/iss-api-preview.png" alt="ISS Konum API Entegrasyonu" width="90%" /></p>`
+>  
+
+https://github.com/user-attachments/assets/c7ff04c2-b50e-4b2e-a7f4-60f6e5e3b945
+
+
 
 ---
 
@@ -121,6 +123,11 @@ Toplam **24.8 Terabyte** arşiv hacmini simüle eden, kategorize edilmiş dinami
 ###  Çoklu Dil Desteği (Localization)
 * `Provider` tabanlı dinamik durum yönetimi sayesinde **Türkçe** ve **İngilizce** dillerinde anlık arayüz geçişi.
 
+
+https://github.com/user-attachments/assets/b788ea9a-604a-4c1d-8bd4-a571ba63bb92
+
+
+
 ###  Hibrit Veri Yönetim Mimarisi
 * Supabase veritabanı bağlantısı ile dinamik kayıt ekleme/çekme.
 * Ağ kesintileri veya eksik veri durumlarında devreye giren güvenli yerel statik dosya haritalama (`localFileMap`) koruması.
@@ -128,6 +135,8 @@ Toplam **24.8 Terabyte** arşiv hacmini simüle eden, kategorize edilmiş dinami
 ###  SEO & Arama Motoru Optimizasyonu
 * **Google Search Console** mülk sahipliği entegrasyonu tamamlanmıştır.
 * `site:` indeksleme ve manuel dizin oluşturma süreçleri aktif olarak yapılandırılmıştır.
+<img width="702" height="365" alt="Ekran görüntüsü 2026-09-10 161024" src="https://github.com/user-attachments/assets/793caa20-e278-4d11-a50b-c75634fb1ccc" />
+
 
 ---
 

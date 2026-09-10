@@ -32,38 +32,6 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Kategori çeviri sözlüğü (İngilizce mod desteği için)
-const categoryTranslations = {
-  'Stratejik Plan': 'Strategic Plan',
-  'Araştırma': 'Research',
-  'Teknik Şartname': 'Technical Specification',
-  'Analiz Raporu': 'Analysis Report',
-  'Operasyon': 'Operations',
-  'Bilimsel': 'Scientific',
-  'Yörünge Görseli': 'Orbit Visual',
-  'Termal Analiz': 'Thermal Analysis',
-  'Oşinografi': 'Oceanography',
-  'Tarım & Çevre': 'Agriculture & Environment',
-  'Kıyı Yapısı': 'Coastal Structure',
-  'Hidroloji': 'Hydrology',
-  'Denetim': 'Inspection',
-  'Jeoloji': 'Geology',
-  'Kentsel Analiz': 'Urban Analysis',
-  'Uzay Hava Durumu': 'Space Weather',
-  'Yörünge Verisi': 'Orbit Data',
-  'Atmosfer': 'Atmosphere',
-  'Telemetri': 'Telemetry',
-  'Mühendislik': 'Engineering',
-  'Sensör': 'Sensor',
-  'Radyasyon': 'Radiation',
-  'Tahrik Testi': 'Propulsion Test',
-  'Mekanik Test': 'Mechanical Test',
-  'Fırlatma': 'Launch',
-  'Çevresel Test': 'Environmental Test',
-  'Yer Sistemleri': 'Ground Systems',
-  'Konferans': 'Conference'
-};
-
 // Tüm ID'leri (DOC, IMG, DAT, VID dahil) doğrudan projedeki yerel dosyalara bağlayan harita
 const localFileMap = {
     "DOC-001": "/media/resim1.jpeg",
@@ -96,48 +64,264 @@ const localFileMap = {
     "VID-TST-306": "/media/video6.mp4"
 };
 
-// Resmi Belgeler sekmesi için sabit liste
+// Resmi Belgeler sekmesi için iki dilli sabit liste
 const fixedDocuments = [
-  { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/resim1.jpeg' },
-  { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/resim2.jpeg' },
-  { id: 'DOC-003', name: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', category: 'Teknik Şartname', date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/resim3.jpeg' },
-  { id: 'DOC-004', name: 'Yörünge Mekaniği ve Çarpışma Önleme Analiz Raporu', category: 'Analiz Raporu', date: '01.08.2026', size: '9.7 MB', format: 'PDF', fileUrl: '/media/resim4.jpeg' },
-  { id: 'DOC-005', name: 'Ankara Yer İstasyonu Operasyonel El Kitabı', category: 'Operasyon', date: '05.07.2026', size: '14.2 MB', format: 'PDF', fileUrl: '/media/resim5.jpeg' },
-  { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/resim6.jpeg' }
+  { 
+    id: 'DOC-001', 
+    nameTr: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', 
+    nameEn: 'Turkish Space Agency 2026-2030 Strategic Plan', 
+    categoryTr: 'Stratejik Plan', 
+    categoryEn: 'Strategic Plan', 
+    date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/resim1.jpeg' 
+  },
+  { 
+    id: 'DOC-002', 
+    nameTr: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', 
+    nameEn: 'AI-Powered Satellite Data Analytics Report', 
+    categoryTr: 'Araştırma', 
+    categoryEn: 'Research', 
+    date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/resim2.jpeg' 
+  },
+  { 
+    id: 'DOC-003', 
+    nameTr: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', 
+    nameEn: 'National Observation Satellite Optical System Technical Specification', 
+    categoryTr: 'Teknik Şartname', 
+    categoryEn: 'Technical Specification', 
+    date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/resim3.jpeg' 
+  },
+  { 
+    id: 'DOC-004', 
+    nameTr: 'Yörünge Mekaniği ve Çarpışma Önleme Analiz Raporu', 
+    nameEn: 'Orbital Mechanics and Collision Avoidance Analysis Report', 
+    categoryTr: 'Analiz Raporu', 
+    categoryEn: 'Analysis Report', 
+    date: '01.08.2026', size: '9.7 MB', format: 'PDF', fileUrl: '/media/resim4.jpeg' 
+  },
+  { 
+    id: 'DOC-005', 
+    nameTr: 'Ankara Yer İstasyonu Operasyonel El Kitabı', 
+    nameEn: 'Ankara Ground Station Operational Manual', 
+    categoryTr: 'Operasyon', 
+    categoryEn: 'Operations', 
+    date: '05.07.2026', size: '14.2 MB', format: 'PDF', fileUrl: '/media/resim5.jpeg' 
+  },
+  { 
+    id: 'DOC-006', 
+    nameTr: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', 
+    nameEn: 'Deep Space Communication Protocols and Security Standard', 
+    categoryTr: 'Bilimsel', 
+    categoryEn: 'Scientific', 
+    date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/resim6.jpeg' 
+  }
 ];
 
-// Uydu Görüntüleri için sabit liste
+// Uydu Görüntüleri için iki dilli sabit liste
 const fixedImages = [
-  { id: 'IMG-AST', name: 'Dünya Üzerinde Gündoğumunu İzleyen Astronot', category: 'Yörünge Görseli', date: '18.08.2026', size: '12.4 MB', format: 'PNG', fileUrl: localFileMap["IMG-AST"], src: imgAstronaut, description: 'Uluslararası Uzay İstasyonu\'ndan çekilen yüksek çözünürlüklü gündoğumu manzarası.' },
-  { id: 'IMG-012', name: 'Anadolu Yarımadası Termal Uydu Katmanı', category: 'Termal Analiz', date: '16.08.2026', size: '15.8 MB', format: 'PNG', fileUrl: localFileMap["IMG-012"], src: img12, description: 'Göktürk-3 uydusu termal sensörlerinden elde edilen sıcaklık dağılım haritası.' },
-  { id: 'IMG-014', name: 'Karadeniz Kıyı Akıntıları Multispektral Gözlem', category: 'Oşinografi', date: '14.08.2026', size: '9.2 MB', format: 'PNG', fileUrl: localFileMap["IMG-014"], src: img14, description: 'Deniz suyu sıcaklığı ve plankton yoğunluğu multispektral uydu analizi.' },
-  { id: 'IMG-015', name: 'Orta Anadolu Tarımsal Kuraklık İndeksi', category: 'Tarım & Çevre', date: '12.08.2026', size: '11.0 MB', format: 'PNG', fileUrl: localFileMap["IMG-015"], src: img15, description: 'NDVI bitki örtüsü indeks verileriyle oluşturulmuş kuraklık analizi haritası.' },
-  { id: 'IMG-016', name: 'İzmir Körfezi Batimetrik Yüzey Modeli', category: 'Kıyı Yapısı', date: '10.08.2026', size: '14.1 MB', format: 'PNG', fileUrl: localFileMap["IMG-016"], src: img16, description: 'Radar altimetre ölçümleriyle çıkarılmış körfez derinlik topoğrafyası.' },
-  { id: 'IMG-017', name: 'Toros Dağları Kar Örtüsü ve Su Rezervi', category: 'Hidroloji', date: '08.08.2026', size: '13.5 MB', format: 'PNG', fileUrl: localFileMap["IMG-017"], src: img17, description: 'Kış sezonu sonu kütle hacim hesaplamaları için optik uydu kesiti.' },
-  { id: 'IMG-018', name: 'İstanbul Boğazı Gemi Trafik Yoğunluğu Radarı', category: 'Denetim', date: '05.08.2026', size: '8.9 MB', format: 'PNG', fileUrl: localFileMap["IMG-018"], src: img18, description: 'Sentetik Açıklıklı Radar (SAR) ile elde edilen boğaz transit geçiş yoğunluğu.' },
-  { id: 'IMG-019', name: 'Van Gölü Havzası Su Seviyesi Değişimi', category: 'Jeoloji', date: '02.08.2026', size: '10.3 MB', format: 'PNG', fileUrl: localFileMap["IMG-019"], src: img19, description: 'Son 5 yıllık uydu altimetri verilerine dayalı kıyı çizgisi değişim analizi.' },
-  { id: 'IMG-020', name: 'Ankara Kentleşme ve Isı Adası Dağılımı', category: 'Kentsel Analiz', date: '30.07.2026', size: '16.2 MB', format: 'PNG', fileUrl: localFileMap["IMG-020"], src: img20, description: 'Yüksek çözünürlüklü uydu verileriyle kentsel ısı adası modellemesi.' },
-  { id: 'IMG-021', name: 'Güneş Patlaması Koronal Kütle Atımı (CME)', category: 'Uzay Hava Durumu', date: '28.07.2026', size: '18.4 MB', format: 'PNG', fileUrl: localFileMap["IMG-021"], src: img21, description: 'Uzay hava gözlem uydularından kaydedilen yüksek enerjili koronal atım.' }
+  { 
+    id: 'IMG-AST', 
+    nameTr: 'Dünya Üzerinde Gündoğumunu İzleyen Astronot', 
+    nameEn: 'Astronaut Watching Sunrise Above Earth', 
+    categoryTr: 'Yörünge Görseli', 
+    categoryEn: 'Orbit Visual', 
+    date: '18.08.2026', size: '12.4 MB', format: 'PNG', fileUrl: localFileMap["IMG-AST"], src: imgAstronaut, 
+    descTr: 'Uluslararası Uzay İstasyonu\'ndan çekilen yüksek çözünürlüklü gündoğumu manzarası.', 
+    descEn: 'High-resolution sunrise view captured from the International Space Station.' 
+  },
+  { 
+    id: 'IMG-012', 
+    nameTr: 'Anadolu Yarımadası Termal Uydu Katmanı', 
+    nameEn: 'Anatolian Peninsula Thermal Satellite Layer', 
+    categoryTr: 'Termal Analiz', 
+    categoryEn: 'Thermal Analysis', 
+    date: '16.08.2026', size: '15.8 MB', format: 'PNG', fileUrl: localFileMap["IMG-012"], src: img12, 
+    descTr: 'Göktürk-3 uydusu termal sensörlerinden elde edilen sıcaklık dağılım haritası.', 
+    descEn: 'Temperature distribution map obtained from Göktürk-3 satellite thermal sensors.' 
+  },
+  { 
+    id: 'IMG-014', 
+    nameTr: 'Karadeniz Kıyı Akıntıları Multispektral Gözlem', 
+    nameEn: 'Black Sea Coastal Currents Multispectral Observation', 
+    categoryTr: 'Oşinografi', 
+    categoryEn: 'Oceanography', 
+    date: '14.08.2026', size: '9.2 MB', format: 'PNG', fileUrl: localFileMap["IMG-014"], src: img14, 
+    descTr: 'Deniz suyu sıcaklığı ve plankton yoğunluğu multispektral uydu analizi.', 
+    descEn: 'Multispectral satellite analysis of seawater temperature and plankton density.' 
+  },
+  { 
+    id: 'IMG-015', 
+    nameTr: 'Orta Anadolu Tarımsal Kuraklık İndeksi', 
+    nameEn: 'Central Anatolia Agricultural Drought Index', 
+    categoryTr: 'Tarım & Çevre', 
+    categoryEn: 'Agriculture & Environment', 
+    date: '12.08.2026', size: '11.0 MB', format: 'PNG', fileUrl: localFileMap["IMG-015"], src: img15, 
+    descTr: 'NDVI bitki örtüsü indeks verileriyle oluşturulmuş kuraklık analizi haritası.', 
+    descEn: 'Drought analysis map created with NDVI vegetation index data.' 
+  },
+  { 
+    id: 'IMG-016', 
+    nameTr: 'İzmir Körfezi Batimetrik Yüzey Modeli', 
+    nameEn: 'Izmir Bay Bathymetric Surface Model', 
+    categoryTr: 'Kıyı Yapısı', 
+    categoryEn: 'Coastal Structure', 
+    date: '10.08.2026', size: '14.1 MB', format: 'PNG', fileUrl: localFileMap["IMG-016"], src: img16, 
+    descTr: 'Radar altimetre ölçümleriyle çıkarılmış körfez derinlik topoğrafyası.', 
+    descEn: 'Gulf depth topography extracted via radar altimeter measurements.' 
+  },
+  { 
+    id: 'IMG-017', 
+    nameTr: 'Toros Dağları Kar Örtüsü ve Su Rezervi', 
+    nameEn: 'Taurus Mountains Snow Cover and Water Reserve', 
+    categoryTr: 'Hidroloji', 
+    categoryEn: 'Hydrology', 
+    date: '08.08.2026', size: '13.5 MB', format: 'PNG', fileUrl: localFileMap["IMG-017"], src: img17, 
+    descTr: 'Kış sezonu sonu kütle hacim hesaplamaları için optik uydu kesiti.', 
+    descEn: 'Optical satellite cross-section for end-of-winter mass volume calculations.' 
+  },
+  { 
+    id: 'IMG-018', 
+    nameTr: 'İstanbul Boğazı Gemi Trafik Yoğunluğu Radarı', 
+    nameEn: 'Istanbul Strait Vessel Traffic Density Radar', 
+    categoryTr: 'Denetim', 
+    categoryEn: 'Inspection', 
+    date: '05.08.2026', size: '8.9 MB', format: 'PNG', fileUrl: localFileMap["IMG-018"], src: img18, 
+    descTr: 'Sentetik Açıklıklı Radar (SAR) ile elde edilen boğaz transit geçiş yoğunluğu.', 
+    descEn: 'Strait transit traffic density obtained via Synthetic Aperture Radar (SAR).' 
+  },
+  { 
+    id: 'IMG-019', 
+    nameTr: 'Van Gölü Havzası Su Seviyesi Değişimi', 
+    nameEn: 'Lake Van Basin Water Level Change', 
+    categoryTr: 'Jeoloji', 
+    categoryEn: 'Geology', 
+    date: '02.08.2026', size: '10.3 MB', format: 'PNG', fileUrl: localFileMap["IMG-019"], src: img19, 
+    descTr: 'Son 5 yıllık uydu altimetri verilerine dayalı kıyı çizgisi değişim analizi.', 
+    descEn: 'Coastline change analysis based on the last 5 years of satellite altimetry data.' 
+  },
+  { 
+    id: 'IMG-020', 
+    nameTr: 'Ankara Kentleşme ve Isı Adası Dağılımı', 
+    nameEn: 'Ankara Urbanization and Heat Island Distribution', 
+    categoryTr: 'Kentsel Analiz', 
+    categoryEn: 'Urban Analysis', 
+    date: '30.07.2026', size: '16.2 MB', format: 'PNG', fileUrl: localFileMap["IMG-020"], src: img20, 
+    descTr: 'Yüksek çözünürlüklü uydu verileriyle kentsel ısı adası modellemesi.', 
+    descEn: 'Urban heat island modeling with high-resolution satellite data.' 
+  },
+  { 
+    id: 'IMG-021', 
+    nameTr: 'Güneş Patlaması Koronal Kütle Atımı (CME)', 
+    nameEn: 'Solar Flare Coronal Mass Ejection (CME)', 
+    categoryTr: 'Uzay Hava Durumu', 
+    categoryEn: 'Space Weather', 
+    date: '28.07.2026', size: '18.4 MB', format: 'PNG', fileUrl: localFileMap["IMG-021"], src: img21, 
+    descTr: 'Uzay hava gözlem uydularından kaydedilen yüksek enerjili koronal atım.', 
+    descEn: 'High-energy coronal ejection recorded from space weather observation satellites.' 
+  }
 ];
 
-// Ham Veri Setleri için sabit liste
+// Ham Veri Setleri için iki dilli sabit liste
 const fixedDatasets = [
-  { id: 'DAT-SET-501', name: 'GPS/GNSS Yörünge Düzeltme Parametreleri (CSV)', category: 'Yörünge Verisi', date: '19.08.2026', size: '42.1 MB', format: 'CSV', fileUrl: '/media/veriseti1.csv' },
-  { id: 'DAT-SET-502', name: 'Atmosferik Gaz Yoğunluğu ve İyonosfer Ölçümleri (JSON)', category: 'Atmosfer', date: '17.08.2026', size: '28.6 MB', format: 'JSON', fileUrl: '/media/veriseti2.csv' },
-  { id: 'DAT-SET-503', name: 'Yer İstasyonu Sinyal Gürültü Oranı Zaman Serisi (CSV)', category: 'Telemetri', date: '14.08.2026', size: '19.4 MB', format: 'CSV', fileUrl: '/media/veriseti3.csv' },
-  { id: 'DAT-SET-504', name: 'Uydu İtki Sistemi Yakıt Tüketim Logları (JSON)', category: 'Mühendislik', date: '11.08.2026', size: '15.2 MB', format: 'JSON', fileUrl: '/media/veriseti4.csv' },
-  { id: 'DAT-SET-505', name: 'Spektral Bant Kalibrasyon Matris Verileri (CSV)', category: 'Sensör', date: '06.08.2026', size: '34.8 MB', format: 'CSV', fileUrl: '/media/veriseti5.csv' },
-  { id: 'DAT-SET-506', name: 'Derin Uzay Keşif Aracı Radyasyon Doz Raporu (JSON)', category: 'Radyasyon', date: '01.08.2026', size: '22.0 MB', format: 'JSON', fileUrl: '/media/veriseti6.csv' }
+  { 
+    id: 'DAT-SET-501', 
+    nameTr: 'GPS/GNSS Yörünge Düzeltme Parametreleri (CSV)', 
+    nameEn: 'GPS/GNSS Orbit Correction Parameters (CSV)', 
+    categoryTr: 'Yörünge Verisi', 
+    categoryEn: 'Orbit Data', 
+    date: '19.08.2026', size: '42.1 MB', format: 'CSV', fileUrl: '/media/veriseti1.csv' 
+  },
+  { 
+    id: 'DAT-SET-502', 
+    nameTr: 'Atmosferik Gaz Yoğunluğu ve İyonosfer Ölçümleri (JSON)', 
+    nameEn: 'Atmospheric Gas Density and Ionosphere Measurements (JSON)', 
+    categoryTr: 'Atmosfer', 
+    categoryEn: 'Atmosphere', 
+    date: '17.08.2026', size: '28.6 MB', format: 'JSON', fileUrl: '/media/veriseti2.csv' 
+  },
+  { 
+    id: 'DAT-SET-503', 
+    nameTr: 'Yer İstasyonu Sinyal Gürültü Oranı Zaman Serisi (CSV)', 
+    nameEn: 'Ground Station Signal-to-Noise Ratio Time Series (CSV)', 
+    categoryTr: 'Telemetri', 
+    categoryEn: 'Telemetry', 
+    date: '14.08.2026', size: '19.4 MB', format: 'CSV', fileUrl: '/media/veriseti3.csv' 
+  },
+  { 
+    id: 'DAT-SET-504', 
+    nameTr: 'Uydu İtki Sistemi Yakıt Tüketim Logları (JSON)', 
+    nameEn: 'Satellite Propulsion System Fuel Consumption Logs (JSON)', 
+    categoryTr: 'Mühendislik', 
+    categoryEn: 'Engineering', 
+    date: '11.08.2026', size: '15.2 MB', format: 'JSON', fileUrl: '/media/veriseti4.csv' 
+  },
+  { 
+    id: 'DAT-SET-505', 
+    nameTr: 'Spektral Bant Kalibrasyon Matris Verileri (CSV)', 
+    nameEn: 'Spectral Band Calibration Matrix Data (CSV)', 
+    categoryTr: 'Sensör', 
+    categoryEn: 'Sensor', 
+    date: '06.08.2026', size: '34.8 MB', format: 'CSV', fileUrl: '/media/veriseti5.csv' 
+  },
+  { 
+    id: 'DAT-SET-506', 
+    nameTr: 'Derin Uzay Keşif Aracı Radyasyon Doz Raporu (JSON)', 
+    nameEn: 'Deep Space Exploration Vehicle Radiation Dose Report (JSON)', 
+    categoryTr: 'Radyasyon', 
+    categoryEn: 'Radiation', 
+    date: '01.08.2026', size: '22.0 MB', format: 'JSON', fileUrl: '/media/veriseti6.csv' 
+  }
 ];
 
-// Videolar için sabit liste
+// Videolar için iki dilli sabit liste
 const fixedVideos = [
-  { id: 'VID-TST-301', name: 'Milli Hibrit Roket Motoru Ateşleme Testi #4', category: 'Tahrik Testi', date: '15.08.2026', size: '240 MB', format: 'MP4', fileUrl: '/media/video1.mp4' },
-  { id: 'VID-TST-302', name: 'Uydu Ayrılma Mekanizması Vakum Odası Testi', category: 'Mekanik Test', date: '10.08.2026', size: '185 MB', format: 'MP4', fileUrl: '/media/video2.mp4' },
-  { id: 'VID-TST-303', name: 'Yüksek İrtifa Balon Atış Testi Görüntüleri', category: 'Fırlatma', date: '02.08.2026', size: '310 MB', format: 'MP4', fileUrl: '/media/video3.mp4' },
-  { id: 'VID-TST-304', name: 'Güneş Paneli Açılma ve Titreşim Simülasyonu', category: 'Çevresel Test', date: '25.07.2026', size: '150 MB', format: 'MP4', fileUrl: '/media/video4.mp4' },
-  { id: 'VID-TST-305', name: 'Anten Takip Sistemi Otomatik Kilitlenme Testi', category: 'Yer Sistemleri', date: '18.07.2026', size: '120 MB', format: 'MP4', fileUrl: '/media/video5.mp4' },
-  { id: 'VID-TST-306', name: 'Kritik Tasarım Gözden Geçirme Toplantı Özeti', category: 'Konferans', date: '10.07.2026', size: '95 MB', format: 'MP4', fileUrl: '/media/video6.mp4' }
+  { 
+    id: 'VID-TST-301', 
+    nameTr: 'Milli Hibrit Roket Motoru Ateşleme Testi #4', 
+    nameEn: 'National Hybrid Rocket Engine Firing Test #4', 
+    categoryTr: 'Tahrik Testi', 
+    categoryEn: 'Propulsion Test', 
+    date: '15.08.2026', size: '240 MB', format: 'MP4', fileUrl: '/media/video1.mp4' 
+  },
+  { 
+    id: 'VID-TST-302', 
+    nameTr: 'Uydu Ayrılma Mekanizması Vakum Odası Testi', 
+    nameEn: 'Satellite Separation Mechanism Vacuum Chamber Test', 
+    categoryTr: 'Mekanik Test', 
+    categoryEn: 'Mechanical Test', 
+    date: '10.08.2026', size: '185 MB', format: 'MP4', fileUrl: '/media/video2.mp4' 
+  },
+  { 
+    id: 'VID-TST-303', 
+    nameTr: 'Yüksek İrtifa Balon Atış Testi Görüntüleri', 
+    nameEn: 'High Altitude Balloon Launch Test Footage', 
+    categoryTr: 'Fırlatma', 
+    categoryEn: 'Launch', 
+    date: '02.08.2026', size: '310 MB', format: 'MP4', fileUrl: '/media/video3.mp4' 
+  },
+  { 
+    id: 'VID-TST-304', 
+    nameTr: 'Güneş Paneli Açılma ve Titreşim Simülasyonu', 
+    nameEn: 'Solar Panel Deployment and Vibration Simulation', 
+    categoryTr: 'Çevresel Test', 
+    categoryEn: 'Environmental Test', 
+    date: '25.07.2026', size: '150 MB', format: 'MP4', fileUrl: '/media/video4.mp4' 
+  },
+  { 
+    id: 'VID-TST-305', 
+    nameTr: 'Anten Takip Sistemi Otomatik Kilitlenme Testi', 
+    nameEn: 'Antenna Tracking System Automatic Lock-on Test', 
+    categoryTr: 'Yer Sistemleri', 
+    categoryEn: 'Ground Systems', 
+    date: '18.07.2026', size: '120 MB', format: 'MP4', fileUrl: '/media/video5.mp4' 
+  },
+  { 
+    id: 'VID-TST-306', 
+    nameTr: 'Kritik Tasarım Gözden Geçirme Toplantı Özeti', 
+    nameEn: 'Critical Design Review Meeting Summary', 
+    categoryTr: 'Konferans', 
+    categoryEn: 'Conference', 
+    date: '10.07.2026', size: '95 MB', format: 'MP4', fileUrl: '/media/video6.mp4' 
+  }
 ];
 
 export default function VeritabaniPage() {
@@ -178,14 +362,17 @@ export default function VeritabaniPage() {
 
             const formattedItem = {
               id: item.id,
-              name: item.name,
-              category: item.category,
+              nameTr: item.name,
+              nameEn: item.name,
+              categoryTr: item.category,
+              categoryEn: item.category,
               date: item.date,
               size: item.size,
               format: item.format,
               fileUrl: localFileMap[item.id] || item.file_url || (targetType === 'images' ? '/media/resim1.jpeg' : '#'),
               src: imageMap[item.id] || imgAstronaut,
-              description: item.name
+              descTr: item.name,
+              descEn: item.name
             };
 
             if (categorized[targetType]) {
@@ -207,13 +394,10 @@ export default function VeritabaniPage() {
     fetchRecords();
   }, []);
 
-  // Kategori adını dile göre çeviren yardımcı fonksiyon
-  const getCategoryLabel = (category) => {
-    if (lang === 'en' && categoryTranslations[category]) {
-      return categoryTranslations[category];
-    }
-    return category;
-  };
+  // Aktif dile göre alanları seçen yardımcı fonksiyonlar
+  const getLocalizedName = (item) => (lang === 'en' && item.nameEn) ? item.nameEn : (item.nameTr || item.name);
+  const getLocalizedCategory = (item) => (lang === 'en' && item.categoryEn) ? item.categoryEn : (item.categoryTr || item.category);
+  const getLocalizedDesc = (item) => (lang === 'en' && item.descEn) ? item.descEn : (item.descTr || item.description || item.name);
 
   const tabs = [
     { id: 'images', label: lang === 'en' ? 'Satellite Images' : 'Uydu Görüntüleri', count: records.images.length, icon: ImageIcon },
@@ -223,11 +407,13 @@ export default function VeritabaniPage() {
   ];
 
   const currentList = records[activeTab] || [];
-  const filteredList = currentList.filter(item => 
-    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredList = currentList.filter(item => {
+    const name = getLocalizedName(item).toLowerCase();
+    const id = item.id.toLowerCase();
+    const category = getLocalizedCategory(item).toLowerCase();
+    const search = searchTerm.toLowerCase();
+    return name.includes(search) || id.includes(search) || category.includes(search);
+  });
 
   return (
     <div className="pt-28 pb-20 max-w-7xl mx-auto px-6">
@@ -325,7 +511,7 @@ export default function VeritabaniPage() {
               >
                 <img 
                   src={item.src?.src || item.src || imgAstronaut} 
-                  alt={item.name}
+                  alt={getLocalizedName(item)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-blue-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -342,15 +528,15 @@ export default function VeritabaniPage() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-mono text-slate-400 bg-black px-2 py-0.5 rounded border border-slate-800">
-                      {getCategoryLabel(item.category)}
+                      {getLocalizedCategory(item)}
                     </span>
                     <span className="text-[10px] font-mono text-slate-500">{item.date}</span>
                   </div>
                   <h3 className="text-xs font-bold text-white mb-2 leading-relaxed font-mono">
-                    {item.name}
+                    {getLocalizedName(item)}
                   </h3>
                   <p className="text-[11px] text-slate-400 leading-relaxed mb-4">
-                    {item.description}
+                    {getLocalizedDesc(item)}
                   </p>
                 </div>
 
@@ -390,12 +576,12 @@ export default function VeritabaniPage() {
                 </div>
 
                 <div className="col-span-4 text-slate-200 font-medium pr-4">
-                  {item.name}
+                  {getLocalizedName(item)}
                 </div>
 
                 <div className="col-span-2 text-slate-400">
                   <span className="px-2 py-0.5 rounded bg-black border border-slate-800 text-[10px]">
-                    {getCategoryLabel(item.category)}
+                    {getLocalizedCategory(item)}
                   </span>
                 </div>
 
@@ -440,7 +626,7 @@ export default function VeritabaniPage() {
             <div className="px-6 py-4 bg-black border-b border-slate-800 flex items-center justify-between font-mono">
               <div>
                 <span className="text-xs text-blue-400 font-bold mr-2">{selectedImage.id}</span>
-                <span className="text-xs text-slate-200">{selectedImage.name}</span>
+                <span className="text-xs text-slate-200">{getLocalizedName(selectedImage)}</span>
               </div>
               <button 
                 onClick={() => setSelectedImage(null)}
@@ -452,11 +638,11 @@ export default function VeritabaniPage() {
             <div className="p-6 flex flex-col items-center justify-center bg-slate-950 gap-4">
               <img 
                 src={selectedImage.src?.src || selectedImage.src || imgAstronaut} 
-                alt={selectedImage.name} 
+                alt={getLocalizedName(selectedImage)} 
                 className="max-h-[60vh] object-contain rounded-xl border border-slate-800"
               />
               <p className="text-xs text-slate-300 text-center max-w-2xl font-mono bg-black/60 p-3 rounded-xl border border-slate-900">
-                {selectedImage.description}
+                {getLocalizedDesc(selectedImage)}
               </p>
             </div>
             <div className="px-6 py-4 bg-black border-t border-slate-800 flex items-center justify-between font-mono text-xs text-slate-400">

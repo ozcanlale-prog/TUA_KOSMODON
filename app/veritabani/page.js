@@ -49,14 +49,6 @@ export default function VeritabaniPage() {
         const categorized = { images: [], documents: [], videos: [], datasets: [] };
         
         data.forEach(item => {
-          let directUrl = item.file_url;
-          if (directUrl && directUrl.includes('/file/d/')) {
-            const match = directUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-            if (match && match[1]) {
-              directUrl = `https://drive.google.com/uc?export=download&id=${match[1]}`;
-            }
-          }
-
           const formattedItem = {
             id: item.id,
             name: item.name,
@@ -64,7 +56,7 @@ export default function VeritabaniPage() {
             date: item.date,
             size: item.size,
             format: item.format,
-            fileUrl: directUrl,
+            fileUrl: item.file_url,
             src: imageMap[item.id] || imgAstronaut,
             description: item.name
           };
@@ -85,13 +77,22 @@ export default function VeritabaniPage() {
     fetchRecords();
   }, []);
 
-  // Güvenli indirme tetikleyici fonksiyon
-  const handleDownload = (e, url) => {
+  const handleLocalDownload = async (e, url, filename) => {
     e.preventDefault();
-    if (!url) return;
-    const win = window.open(url, '_blank');
-    if (!win) {
-      window.location.href = url;
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = filename || 'arsiv_dosyasi';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      console.error('İndirme hatası:', err);
+      window.open(url, '_blank');
     }
   };
 
@@ -236,12 +237,13 @@ export default function VeritabaniPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-slate-800/80 font-mono text-[11px]">
                   <span className="text-slate-400">{item.size} • <strong className="text-blue-400">{item.format}</strong></span>
-                  <button 
-                    onClick={(e) => handleDownload(e, item.fileUrl)}
+                  <a 
+                    href={item.fileUrl} 
+                    onClick={(e) => handleLocalDownload(e, item.fileUrl, `${item.id}_${item.name}.${item.format.toLowerCase()}`)}
                     className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner cursor-pointer"
                   >
                     <Download className="w-3 h-3" /> {lang === 'en' ? "Download" : "İndir"}
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -287,13 +289,14 @@ export default function VeritabaniPage() {
                 </div>
 
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
-                  <button 
-                    onClick={(e) => handleDownload(e, item.fileUrl)}
+                  <a 
+                    href={item.fileUrl} 
+                    onClick={(e) => handleLocalDownload(e, item.fileUrl, `${item.id}_${item.name}.${item.format.toLowerCase()}`)}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all cursor-pointer"
                   >
                     <Download className="w-3 h-3 text-slate-400" />
                     {lang === 'en' ? "Download" : "İndir"}
-                  </button>
+                  </a>
                 </div>
 
               </div>

@@ -46,12 +46,49 @@ Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için k
 
 > https://github.com/user-attachments/assets/1967bc72-5641-49bd-a79e-983aedba7ba7
 
-### 2. ⚡ Modal ve Lightbox Geçiş Animasyonları
+### 2.  Modal ve Lightbox Geçiş Animasyonları
+
 * **Açıklama:** Uydu görsellerine tıklandığında açılan büyük boyutlu önizleme pencerelerinin (Lightbox) arka planı bulanıklaştıran (`backdrop-blur-md`) ve yumuşak geçiş yapan animasyon yapısı.
 
+
+
+>  
+
+
+
  https://github.com/user-attachments/assets/55797afc-ee57-4588-9c9c-36c07d2f4420
- https://github.com/user-attachments/assets/525cd6b6-e7ee-402a-875d-c6b6aa80a580
+
+              
+
+              
+
+              
+
+ 
+
+
+
+https://github.com/user-attachments/assets/525cd6b6-e7ee-402a-875d-c6b6aa80a580
+
+
+
+
+
+              
+
+              
+
+              
+
  https://github.com/user-attachments/assets/4c7c22a4-ca1f-4156-84fb-9bc6819a78e8
+
+
+
+
+
+> 
+
+
 
 ---
 

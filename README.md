@@ -14,7 +14,7 @@
 ---
 
 ##  Proje Tanıtım Videosu & Canlı Akış
->
+
 >https://github.com/user-attachments/assets/5e158d28-d057-48a7-a523-8a8a9d677c9f
 <p align="center">
   <video src="./public/media/webvideosu.mp4" width="100%" autoplay loop muted playsinline controls></video>
@@ -44,7 +44,7 @@ Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için k
 ### 1. 🌟 Canlı Arka Plan Yıldız ve Yörünge Efektleri
 * **Açıklama:** Ana sayfa ve veritabanı arayüzünde akıcı geçişler sağlayan CSS/Tailwind tabanlı parlayan yıldız animasyonları ve nabız efektleri (`animate-pulse`).
 
-> https://github.com/user-attachments/assets/1967bc72-5641-49bd-a79e-983aedba7ba7
+ https://github.com/user-attachments/assets/1967bc72-5641-49bd-a79e-983aedba7ba7
 
 ### 2.  Modal ve Lightbox Geçiş Animasyonları
 
@@ -52,7 +52,7 @@ Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için k
 
 
 
->  
+  
 
 
 
@@ -86,7 +86,7 @@ https://github.com/user-attachments/assets/525cd6b6-e7ee-402a-875d-c6b6aa80a580
 
 
 
-> 
+ 
 
 
 
@@ -97,7 +97,7 @@ https://github.com/user-attachments/assets/525cd6b6-e7ee-402a-875d-c6b6aa80a580
 Portal genelinde kullanıcıların sorularını yanıtlamak ve rehberlik etmek amacıyla entegre edilmiş yapay zeka asistanı bileşeni:
 * **Özellikler:** Sağ altta konumlanan etkileşimli sohbet balonu (`"Bizimle sohbet edin 👋"`), modern açılır pencere tasarımı ve anlık asistan yanıtları.
 
-> 
+ 
 
 https://github.com/user-attachments/assets/d1409ce0-5a42-42e1-949e-8c46bd4634ff
 
@@ -121,7 +121,7 @@ Projenin arka plan mimarisinde verilerin çekildiği, harici servislerden anlık
 * **Kullanıldığı Yer:** Projedeki uydu görüntüleri, resmi belgeler, videolar ve veri setleri Supabase üzerindeki `space_records` tablosunda merkezi olarak saklanır.
 * **Nasıl Çalışır:** Sayfa yüklendiğinde (`useEffect` içinde) istemci tarafı API isteği atarak bu tablodaki verileri dinamik olarak çeker.
 
-> <img width="1919" height="1069" alt="image" src="https://github.com/user-attachments/assets/01c8e3a6-c0d1-423b-bc5d-cc24e710af04" />
+ <img width="1919" height="1069" alt="image" src="https://github.com/user-attachments/assets/01c8e3a6-c0d1-423b-bc5d-cc24e710af04" />
 
 ### 2.  Supabase Client API Entegrasyonu (`createClient`)
 * **Kullanıldığı Yer:** `app/veritabani/page.tsx` dosyasının başında ve ilgili servis katmanlarında.
@@ -133,7 +133,7 @@ Projenin arka plan mimarisinde verilerin çekildiği, harici servislerden anlık
 * **Kullanıldığı Yer:** Uzay istasyonunun anlık yörünge ve coğrafi konum verilerini (enlem, boylam) dış kaynaklı API servisleri üzerinden anlık olarak çeken servis bileşeni.
 * **Nasıl Çalışır:** Asenkron veri çekme istekleriyle (fetch/axios) uzay istasyonunun anlık koordinatları arayüze yansıtılır.
 
-> https://github.com/user-attachments/assets/c7ff04c2-b50e-4b2e-a7f4-60f6e5e3b945
+ https://github.com/user-attachments/assets/c7ff04c2-b50e-4b2e-a7f4-60f6e5e3b945
 
 ---
 
@@ -149,7 +149,7 @@ Toplam **24.8 Terabyte** arşiv hacmini simüle eden, kategorize edilmiş dinami
 ###  Çoklu Dil Desteği (Localization)
 * `Provider` tabanlı dinamik durum yönetimi sayesinde **Türkçe** ve **İngilizce** dillerinde anlık arayüz geçişi.
 
-> https://github.com/user-attachments/assets/b788ea9a-604a-4c1d-8bd4-a571ba63bb92
+ https://github.com/user-attachments/assets/b788ea9a-604a-4c1d-8bd4-a571ba63bb92
 
 ###  Hibrit Veri Yönetim Mimarisi
 * Supabase veritabanı bağlantısı ile dinamik kayıt ekleme/çekme.

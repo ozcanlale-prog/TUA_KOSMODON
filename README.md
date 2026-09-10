@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🛰️ TUA KOSMODON
+### **Türkiye Uzay Ajansı (TUA) Resmi Portalı & Merkezi Veritabanı**
+*Yüksek Çözünürlüklü Uydu Gözlem Arşivi, Stratejik Raporlar ve Uzay Teknolojileri Platformu*
 
-First, run the development server:
+[![Vercel Deployment](https://img.shields.io/badge/Status-Live%20%26%20Production-success?style=for-the-badge&logo=vercel)](https://tua-kosmodon.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Framework-Next.js%2016-black?style=for-the-badge&logo=next.js)](https://next.js.org/)
+[![Supabase](https://img.shields.io/badge/Database-Supabase%20Cloud-3ecf8e?style=for-the-badge&logo=supabase)](https://supabase.com/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📌 Proje Hakkında
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**TUA KOSMODON**, Türkiye Uzay Ajansı'nın vizyoner misyonundan ilham alınarak geliştirilmiş; araştırmacılar, mühendisler ve uzay meraklıları için tasarlanmış kurumsal bir web portalıdır. Modern web teknolojileriyle inşa edilen platform; kurum bünyesinde üretilen stratejik resmi belgeleri, yörünge veri setlerini, yüksek çözünürlüklü uydu görüntülerini ve fırlatma test kayıtlarını tek bir merkezi havuzda toplar.
 
-## Learn More
+Proje; bulut tabanlı **Supabase Cloud** veritabanı altyapısı, kesintisiz veri akışı sağlayan yerel fallback (yedek) mimarisi ve tamamen özelleştirilmiş kurumsal arayüzü ile **Vercel** üzerinden canlı olarak hizmet vermektedir.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌟 Öne Çıkan Özellikler ve Modüller
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🗄️ 1. Merkezi Veritabanı Arşivi (`/veritabani`)
+Toplam **24.8 Terabyte** arşiv hacmini simüle eden, kategorize edilmiş dinamik veri yönetim paneli:
+* 🛰️ **Uydu Görüntüleri:** Yeryüzü gözlem verileri, multispektral haritalar, termal analizler ve *Lightbox* entegrasyonlu büyük boyutlu görsel önizleme modülü.
+* 📄 **Resmi Belgeler & Raporlar:** Stratejik planlar, teknik şartnameler ve yörünge mekaniği analiz raporları.
+* 🎬 **Fırlatma & Test Videoları:** Milli hibrit roket motoru ateşleme testleri, vakum odası simülasyonları ve yüksek iştirakli atış kayıtları.
+* 📊 **Ham Veri Setleri (CSV / JSON):** GNSS yörünge düzeltme parametreleri, atmosferik gaz yoğunlukları ve telemetri zaman serileri.
 
-## Deploy on Vercel
+### 🌐 2. Çoklu Dil Desteği (Localization)
+* `Provider` tabanlı dinamik durum yönetimi sayesinde **Türkçe** ve **İngilizce** dillerinde anlık arayüz geçişi.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ⚡ 3. Hibrit Veri Yönetim Mimarisi
+* Supabase veritabanı bağlantısı ile dinamik kayıt ekleme/çekme.
+* Ağ kesintileri veya eksik veri durumlarında devreye giren güvenli yerel statik dosya haritalama (`localFileMap`) koruması.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🔍 4. SEO & Arama Motoru Optimizasyonu
+* **Google Search Console** mülk sahipliği entegrasyonu tamamlanmıştır.
+* `site:` indeksleme ve manuel dizin oluşturma süreçleri aktif olarak yapılandırılmıştır.
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+| Kategori | Teknoloji / Kütüphane | Açıklama |
+| :--- | :--- | :--- |
+| **Framework** | Next.js 16 (App Router) | Hızlı sunucu tarafı işleme ve Turbopack derleme desteği |
+| **Veritabanı** | Supabase (`@supabase/supabase-js`) | İlişkisel bulut veritabanı ve güvenli API yönetimi |
+| **Stil & UI** | Tailwind CSS & Lucide React | Modern kurumsal koyu tema (`#030712`) ve vektörel simgeler |
+| **Hosting & CI/CD** | Vercel | Otomatik GitHub entegrasyonlu bulut dağıtım altyapısı |
+
+---
+
+## ⚙️ Kurulum ve Yerel Çalıştırma
+
+Projeyi kendi bilgisayarınızda (local) ayağa kaldırmak için adım adım takip edebileceğiniz rehber:
+
+1. **Repoyu klonlayın:**
+   ```bash
+   git clone [https://github.com/ozcanlale-prog/TUA_KOSMODON.git](https://github.com/ozcanlale-prog/TUA_KOSMODON.git)
+   cd TUA_KOSMODON

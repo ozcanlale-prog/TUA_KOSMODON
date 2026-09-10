@@ -35,6 +35,24 @@
 
 ---
 
+## ✨ Arayüz Animasyonları & Etkileşimler
+
+Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için kullanılan dinamik animasyonlar:
+
+### 1. 🌟 Canlı Arka Plan Yıldız ve Yörünge Efektleri
+* **Açıklama:** Ana sayfa ve veritabanı arayüzünde akıcı geçişler sağlayan CSS/Tailwind tabanlı parlayan yıldız animasyonları ve nabız efektleri (`animate-pulse`).
+
+> 🎬 *Buraya arkaplan animasyonunun veya akışın çalışırken kaydedilmiş videosunu/GIF'ini ekleyebilirsin:*
+> `<p align="center"><img src="./public/media/animation-bg.gif" alt="Arkaplan Animasyonları" width="90%" /></p>`
+
+### 2. ⚡ Modal ve Lightbox Geçiş Animasyonları
+* **Açıklama:** Uydu görsellerine tıklandığında açılan büyük boyutlu önizleme pencerelerinin (Lightbox) arka planı bulanıklaştıran (`backdrop-blur-md`) ve yumuşak geçiş yapan animasyon yapısı.
+
+> 🎬 *Buraya Lightbox modal açılış animasyonunun videosunu/GIF'ini ekleyebilirsin:*
+> `<p align="center"><img src="./public/media/animation-modal.gif" alt="Modal Açılış Animasyonu" width="90%" /></p>`
+
+---
+
 ## 📌 Proje Hakkında
 
 **TUA KOSMODON**, Türkiye Uzay Ajansı'nın vizyoner misyonundan ilham alınarak geliştirilmiş; araştırmacılar, mühendisler ve uzay meraklıları için tasarlanmış kurumsal bir web portalıdır. Modern web teknolojileriyle inşa edilen platform; kurum bünyesinde üretilen stratejik resmi belgeleri, yörünge veri setlerini, yüksek çözünürlüklü uydu görüntülerini ve fırlatma test kayıtlarını tek bir merkezi havuzda toplar.

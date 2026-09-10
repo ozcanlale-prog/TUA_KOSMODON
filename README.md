@@ -54,15 +54,15 @@ https://github.com/user-attachments/assets/1967bc72-5641-49bd-a79e-983aedba7ba7
 
 > 🎬 
 
-              https://github.com/user-attachments/assets/55797afc-ee57-4588-9c9c-36c07d2f4420
+ https://github.com/user-attachments/assets/55797afc-ee57-4588-9c9c-36c07d2f4420
               
               
               
-              https://github.com/user-attachments/assets/800637a5-270d-46a0-9fd6-0230d7aa734a
+ https://github.com/user-attachments/assets/800637a5-270d-46a0-9fd6-0230d7aa734a
               
               
               
-              https://github.com/user-attachments/assets/4c7c22a4-ca1f-4156-84fb-9bc6819a78e8
+ https://github.com/user-attachments/assets/4c7c22a4-ca1f-4156-84fb-9bc6819a78e8
 
 
 > `<p align="center"><img src="./public/media/animation-modal.gif" alt="Modal Açılış Animasyonu" width="90%" /></p>`

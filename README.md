@@ -13,7 +13,7 @@
 
 ---
 
-## 🎥 Proje Tanıtım Videosu & Canlı Akış
+##  Proje Tanıtım Videosu & Canlı Akış
 > *Aşağıdaki video kaydında projenin modern arayüz tasarımı, akıcı tema geçişleri, veritabanı sekmeleri arası geçişler ve modal önizleme özellikleri çalışırken gösterilmektedir.*
 
 <p align="center">
@@ -22,7 +22,7 @@
 
 ---
 
-## 📸 Arayüz & Görsel Önizlemeler
+##  Arayüz & Görsel Önizlemeler
 
 > <img width="1905" height="1079" alt="Ekran görüntüsü 2026-09-10 163427" src="https://github.com/user-attachments/assets/ac2e0267-01d7-483f-bf78-fbad796549f2" />
 <img width="1906" height="1079" alt="Ekran görüntüsü 2026-09-10 163438" src="https://github.com/user-attachments/assets/a9c269d9-f9de-4b53-b243-f41f1973458a" />
@@ -30,20 +30,16 @@
 <img width="1904" height="1079" alt="Ekran görüntüsü 2026-09-10 165805" src="https://github.com/user-attachments/assets/5e6e0dc0-95a6-4a55-8b53-ea0f42bbdd6f" />
 
 
-<p align="center">
-  <img src="./public/media/homepage-preview.png" alt="Ana Sayfa Görünümü" width="48%" />
-  <img src="./public/media/database-preview.png" alt="Merkezi Veritabanı Arayüzü" width="48%" />
-</p>
 
 * **Görsel Tasarım Detayları:** Arayüzde `#030712` bazlı koyu uzay teması, cam efekti (`backdrop-blur`), özel cerulean mavi vurgular (`#3b82f6`) ve monospaced teknik veri etiketleri kullanılarak profesyonel bir kurum kimliği oluşturulmuştur.
 
 ---
 
-## ✨ Arayüz Animasyonları & Etkileşimler
+##  Arayüz Animasyonları & Etkileşimler
 
 Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için kullanılan dinamik animasyonlar:
 
-### 1. 🌟 Canlı Arka Plan Yıldız ve Yörünge Efektleri
+### 1.  Canlı Arka Plan Yıldız ve Yörünge Efektleri
 * **Açıklama:** Ana sayfa ve veritabanı arayüzünde akıcı geçişler sağlayan CSS/Tailwind tabanlı parlayan yıldız animasyonları ve nabız efektleri (`animate-pulse`).
 
 > 
@@ -53,7 +49,7 @@ https://github.com/user-attachments/assets/1967bc72-5641-49bd-a79e-983aedba7ba7
  
 > `<p align="center"><img src="./public/media/animation-bg.gif" alt="Arkaplan Animasyonları" width="90%" /></p>`
 
-### 2. ⚡ Modal ve Lightbox Geçiş Animasyonları
+### 2.  Modal ve Lightbox Geçiş Animasyonları
 * **Açıklama:** Uydu görsellerine tıklandığında açılan büyük boyutlu önizleme pencerelerinin (Lightbox) arka planı bulanıklaştıran (`backdrop-blur-md`) ve yumuşak geçiş yapan animasyon yapısı.
 
 > 🎬 

@@ -48,32 +48,33 @@ export default function VeritabaniPage() {
 
         const categorized = { images: [], documents: [], videos: [], datasets: [] };
         
-        data.forEach(item => {
-          const formattedItem = {
-            id: item.id,
-            name: item.name,
-            category: item.category,
-            date: item.date,
-            size: item.size,
-            format: item.format,
-            fileUrl: item.file_url,
-            src: imageMap[item.id] || imgAstronaut,
-            description: item.name
-          };
+        if (data) {
+          data.forEach(item => {
+            const formattedItem = {
+              id: item.id,
+              name: item.name,
+              category: item.category,
+              date: item.date,
+              size: item.size,
+              format: item.format,
+              fileUrl: item.file_url,
+              src: imageMap[item.id] || imgAstronaut,
+              description: item.name
+            };
 
-          // Eğer veritabanındaki file_type uyuşmazsa veya boşsa kategorilere güvenli dağıt
-          let targetType = item.file_type;
-          if (!targetType || !categorized[targetType]) {
-            if (item.id.startsWith('IMG')) targetType = 'images';
-            else if (item.id.startsWith('DAT')) targetType = 'datasets';
-            else if (item.id.startsWith('VID')) targetType = 'videos';
-            else targetType = 'documents';
-          }
+            let targetType = item.file_type;
+            if (!targetType || !categorized[targetType]) {
+              if (item.id && item.id.startsWith('IMG')) targetType = 'images';
+              else if (item.id && item.id.startsWith('DAT')) targetType = 'datasets';
+              else if (item.id && item.id.startsWith('VID')) targetType = 'videos';
+              else targetType = 'documents';
+            }
 
-          if (categorized[targetType]) {
-            categorized[targetType].push(formattedItem);
-          }
-        });
+            if (categorized[targetType]) {
+              categorized[targetType].push(formattedItem);
+            }
+          });
+        }
 
         setRecords(categorized);
       } catch (err) {
@@ -327,7 +328,7 @@ export default function VeritabaniPage() {
                 className="max-h-[60vh] object-contain rounded-xl border border-slate-800"
               />
               <p className="text-xs text-slate-300 text-center max-w-2xl font-mono bg-black/60 p-3 rounded-xl border border-slate-900">
-                {selectedName = selectedImage.description}
+                {selectedImage.description}
               </p>
             </div>
             <div className="px-6 py-4 bg-black border-t border-slate-800 flex items-center justify-between font-mono text-xs text-slate-400">

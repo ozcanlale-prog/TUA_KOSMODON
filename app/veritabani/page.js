@@ -32,12 +32,44 @@ const imageMap = {
     "IMG-021": img21,
 };
 
+// Veritabanında bulunmayan "Resmi Belgeler" için yedek liste (Yerel dosya yollarıyla)
+const fallbackDocuments = [
+  { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/veriseti1.csv' },
+  { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/veriseti2.csv' },
+  { id: 'DOC-003', name: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', category: 'Teknik Şartname', date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/veriseti3.csv' },
+  { id: 'DOC-004', name: 'Yörünge Mekaniği ve Çarpışma Önleme Analiz Raporu', category: 'Analiz Raporu', date: '01.08.2026', size: '9.7 MB', format: 'PDF', fileUrl: '/media/veriseti4.csv' },
+  { id: 'DOC-005', name: 'Ankara Yer İstasyonu Operasyonel El Kitabı', category: 'Operasyon', date: '05.07.2026', size: '14.2 MB', format: 'PDF', fileUrl: '/media/veriseti5.csv' },
+  { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/veriseti6.csv' }
+];
+
+// Supabase'den gelen drive linklerini projedeki local dosyalara çeviren eşleme haritası
+const localFileMap = {
+  "IMG-012": "/media/resim1.jpeg",
+  "IMG-014": "/media/resim2.jpeg",
+  "IMG-015": "/media/resim3.jpeg",
+  "IMG-016": "/media/resim4.jpeg",
+  "IMG-017": "/media/resim5.jpeg",
+  "IMG-018": "/media/resim6.jpeg",
+  "DAT-SET-501": "/media/veriseti1.csv",
+  "DAT-SET-502": "/media/veriseti2.csv",
+  "DAT-SET-503": "/media/veriseti3.csv",
+  "DAT-SET-504": "/media/veriseti4.csv",
+  "DAT-SET-505": "/media/veriseti5.csv",
+  "DAT-SET-506": "/media/veriseti6.csv",
+  "VID-TST-301": "/media/video1.mp4",
+  "VID-TST-302": "/media/video2.mp4",
+  "VID-TST-303": "/media/video3.mp4",
+  "VID-TST-304": "/media/video4.mp4",
+  "VID-TST-305": "/media/video5.mp4",
+  "VID-TST-306": "/media/video6.mp4"
+};
+
 export default function VeritabaniPage() {
   const { lang } = useLanguage();
   const [activeTab, setActiveTab] = useState('images');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
-  const [records, setRecords] = useState({ images: [], documents: [], videos: [], datasets: [] });
+  const [records, setRecords] = useState({ images: [], documents: fallbackDocuments, videos: [], datasets: [] });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -46,7 +78,7 @@ export default function VeritabaniPage() {
         const { data, error } = await supabase.from('space_records').select('*');
         if (error) throw error;
 
-        const categorized = { images: [], documents: [], videos: [], datasets: [] };
+        const categorized = { images: [], documents: [...fallbackDocuments], videos: [], datasets: [] };
         
         if (data) {
           data.forEach(item => {
@@ -57,7 +89,7 @@ export default function VeritabaniPage() {
               date: item.date,
               size: item.size,
               format: item.format,
-              fileUrl: item.file_url,
+              fileUrl: localFileMap[item.id] || item.file_url, // Drive linki yerine doğrudan local dosya yolu
               src: imageMap[item.id] || imgAstronaut,
               description: item.name
             };
@@ -71,7 +103,9 @@ export default function VeritabaniPage() {
             }
 
             if (categorized[targetType]) {
-              categorized[targetType].push(formattedItem);
+              if (!categorized[targetType].some(existing => existing.id === formattedItem.id)) {
+                categorized[targetType].push(formattedItem);
+              }
             }
           });
         }
@@ -228,12 +262,13 @@ export default function VeritabaniPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-slate-800/80 font-mono text-[11px]">
                   <span className="text-slate-400">{item.size} • <strong className="text-blue-400">{item.format}</strong></span>
-                  <button 
-                    onClick={() => setSelectedImage(item)}
-                    className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner"
+                  <a 
+                    href={item.fileUrl} 
+                    download
+                    className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner cursor-pointer"
                   >
-                    <Download className="w-3 h-3" /> {lang === 'en' ? "Inspect" : "İncele"}
-                  </button>
+                    <Download className="w-3 h-3" /> {lang === 'en' ? "Download" : "İndir"}
+                  </a>
                 </div>
               </div>
 
@@ -281,9 +316,8 @@ export default function VeritabaniPage() {
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
                   <a 
                     href={item.fileUrl} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all"
+                    download
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all cursor-pointer"
                   >
                     <Download className="w-3 h-3 text-slate-400" />
                     {lang === 'en' ? "Download" : "İndir"}

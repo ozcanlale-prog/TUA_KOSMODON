@@ -32,7 +32,7 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Resmi Belgeler için doğrudan kod içine gömülü sabit ve eksiksiz liste
+// Resmi Belgeler sekmesi için sabit ve yerel yollu liste
 const fixedDocuments = [
   { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/veriseti1.csv' },
   { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/veriseti2.csv' },
@@ -42,7 +42,8 @@ const fixedDocuments = [
   { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/veriseti6.csv' }
 ];
 
-const localFileMap = {
+// Tüm ID'leri kesin olarak projedeki public/media/ dosyalarına bağlayan harita
+const forcedLocalFiles = {
   "IMG-012": "/media/resim1.jpeg",
   "IMG-014": "/media/resim2.jpeg",
   "IMG-015": "/media/resim3.jpeg",
@@ -81,6 +82,9 @@ export default function VeritabaniPage() {
         
         if (data) {
           data.forEach(item => {
+            // Supabase'den ne gelirse gelsin dosya yolunu kesin olarak yerel /media/ klasörüne zorla
+            const localUrl = forcedLocalFiles[item.id] || (item.id && item.id.startsWith('IMG') ? "/media/resim1.jpeg" : "/media/veriseti1.csv");
+
             const formattedItem = {
               id: item.id,
               name: item.name,
@@ -88,7 +92,7 @@ export default function VeritabaniPage() {
               date: item.date,
               size: item.size,
               format: item.format,
-              fileUrl: localFileMap[item.id] || item.file_url,
+              fileUrl: localUrl, 
               src: imageMap[item.id] || imgAstronaut,
               description: item.name
             };

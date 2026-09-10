@@ -61,8 +61,17 @@ export default function VeritabaniPage() {
             description: item.name
           };
 
-          if (categorized[item.file_type]) {
-            categorized[item.file_type].push(formattedItem);
+          // Eğer veritabanındaki file_type uyuşmazsa veya boşsa kategorilere güvenli dağıt
+          let targetType = item.file_type;
+          if (!targetType || !categorized[targetType]) {
+            if (item.id.startsWith('IMG')) targetType = 'images';
+            else if (item.id.startsWith('DAT')) targetType = 'datasets';
+            else if (item.id.startsWith('VID')) targetType = 'videos';
+            else targetType = 'documents';
+          }
+
+          if (categorized[targetType]) {
+            categorized[targetType].push(formattedItem);
           }
         });
 
@@ -122,7 +131,7 @@ export default function VeritabaniPage() {
         </div>
       </div>
 
-      {/* Kategori Sekmeleri (Başta Uydu Görüntüleri) */}
+      {/* Kategori Sekmeleri */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {tabs.map((tab) => {
           const IconComp = tab.icon;
@@ -271,7 +280,6 @@ export default function VeritabaniPage() {
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
                   <a 
                     href={item.fileUrl} 
-                    download 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all"
@@ -319,7 +327,7 @@ export default function VeritabaniPage() {
                 className="max-h-[60vh] object-contain rounded-xl border border-slate-800"
               />
               <p className="text-xs text-slate-300 text-center max-w-2xl font-mono bg-black/60 p-3 rounded-xl border border-slate-900">
-                {selectedImage.description}
+                {selectedName = selectedImage.description}
               </p>
             </div>
             <div className="px-6 py-4 bg-black border-t border-slate-800 flex items-center justify-between font-mono text-xs text-slate-400">

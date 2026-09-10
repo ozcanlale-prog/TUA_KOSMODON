@@ -49,9 +49,9 @@ Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için k
 ### 2. ⚡ Modal ve Lightbox Geçiş Animasyonları
 * **Açıklama:** Uydu görsellerine tıklandığında açılan büyük boyutlu önizleme pencerelerinin (Lightbox) arka planı bulanıklaştıran (`backdrop-blur-md`) ve yumuşak geçiş yapan animasyon yapısı.
 
-> https://github.com/user-attachments/assets/55797afc-ee57-4588-9c9c-36c07d2f4420
-> https://github.com/user-attachments/assets/525cd6b6-e7ee-402a-875d-c6b6aa80a580
-> https://github.com/user-attachments/assets/4c7c22a4-ca1f-4156-84fb-9bc6819a78e8
+ https://github.com/user-attachments/assets/55797afc-ee57-4588-9c9c-36c07d2f4420
+ https://github.com/user-attachments/assets/525cd6b6-e7ee-402a-875d-c6b6aa80a580
+ https://github.com/user-attachments/assets/4c7c22a4-ca1f-4156-84fb-9bc6819a78e8
 
 ---
 
@@ -60,8 +60,11 @@ Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için k
 Portal genelinde kullanıcıların sorularını yanıtlamak ve rehberlik etmek amacıyla entegre edilmiş yapay zeka asistanı bileşeni:
 * **Özellikler:** Sağ altta konumlanan etkileşimli sohbet balonu (`"Bizimle sohbet edin 👋"`), modern açılır pencere tasarımı ve anlık asistan yanıtları.
 
-> 🎬 *Buraya yapay zeka asistanının çalışırken ki ekran görüntüsünü veya GIF/videosunu ekleyebilirsin:*
-> `<p align="center"><img src="./public/media/ai-assistant-preview.gif" alt="Yapay Zeka Asistanı Önizlemesi" width="90%" /></p>`
+> 
+
+https://github.com/user-attachments/assets/d1409ce0-5a42-42e1-949e-8c46bd4634ff
+
+
 
 ---
 

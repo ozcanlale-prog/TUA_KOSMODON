@@ -43,23 +43,43 @@ Proje; bulut tabanlı **Supabase Cloud** veritabanı altyapısı, kesintisiz ver
 
 ---
 
+## 🛠️ Mimari, API ve Veritabanı Entegrasyon Noktaları
+
+Projenin arka plan mimarisinde verilerin çekildiği, API'lerin bağlandığı ve veritabanı tablolarının yönetildiği kritik noktalar şunlardır:
+
+### 1. 🗄️ Supabase Veritabanı Paneli (`space_records` Tablosu)
+* **Kullanıldığı Yer:** Projedeki uydu görüntüleri, resmi belgeler, videolar ve veri setleri Supabase üzerindeki `space_records` tablosunda merkezi olarak saklanır.
+* **Nasıl Çalışır:** Sayfa yüklendiğinde (`useEffect` içinde) istemci tarafı API isteği atarak bu tablodaki verileri dinamik olarak çeker.
+
+> 🖼️ *Buraya Supabase panelindeki `space_records` tablonun ekran görüntüsünü ekleyebilirsin:*
+> `<p align="center"><img src="./public/media/supabase-table-preview.png" alt="Supabase Veritabanı Tablosu" width="90%" /></p>`
+
+### 2. ⚡ Supabase Client API Entegrasyonu (`createClient`)
+* **Kullanıldığı Yer:** `app/veritabani/page.tsx` dosyasının başında ve ilgili servis katmanlarında.
+* **Nasıl Çalışır:** `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` çevre değişkenleri (environment variables) kullanılarak istemci güvenli bir şekilde Supabase bulut sunucusuna bağlanır.
+
+> 💻 *Buraya Next.js kodunda API istemcisinin başlatıldığı kısmın ekran görüntüsünü (kod bloğu veya editör görünümü) ekleyebilirsin:*
+> `<p align="center"><img src="./public/media/api-code-preview.png" alt="API Entegrasyon Kodu" width="90%" /></p>`
+
+---
+
 ## 🌟 Öne Çıkan Özellikler ve Modüller
 
-### 🗄️ 1. Merkezi Veritabanı Arşivi (`/veritabani`)
+### 🗄️ Merkezi Veritabanı Arşivi (`/veritabani`)
 Toplam **24.8 Terabyte** arşiv hacmini simüle eden, kategorize edilmiş dinamik veri yönetim paneli:
 * 🛰️ **Uydu Görüntüleri:** Yeryüzü gözlem verileri, multispektral haritalar, termal analizler ve *Lightbox* (büyük boyutlu görsel inceleme) entegrasyonlu detay modülü.
 * 📄 **Resmi Belgeler & Raporlar:** Stratejik planlar, teknik şartnameler ve yörünge mekaniği analiz raporları.
 * 🎬 **Fırlatma & Test Videoları:** Milli hibrit roket motoru ateşleme testleri, vakum odası simülasyonları ve yüksek iştirakli atış kayıtları.
 * 📊 **Ham Veri Setleri (CSV / JSON):** GNSS yörünge düzeltme parametreleri, atmosferik gaz yoğunlukları ve telemetri zaman serileri.
 
-### 🌐 2. Çoklu Dil Desteği (Localization)
+### 🌐 Çoklu Dil Desteği (Localization)
 * `Provider` tabanlı dinamik durum yönetimi sayesinde **Türkçe** ve **İngilizce** dillerinde anlık arayüz geçişi.
 
-### ⚡ 3. Hibrit Veri Yönetim Mimarisi
+### ⚡ Hibrit Veri Yönetim Mimarisi
 * Supabase veritabanı bağlantısı ile dinamik kayıt ekleme/çekme.
 * Ağ kesintileri veya eksik veri durumlarında devreye giren güvenli yerel statik dosya haritalama (`localFileMap`) koruması.
 
-### 🔍 4. SEO & Arama Motoru Optimizasyonu
+### 🔍 SEO & Arama Motoru Optimizasyonu
 * **Google Search Console** mülk sahipliği entegrasyonu tamamlanmıştır.
 * `site:` indeksleme ve manuel dizin oluşturma süreçleri aktif olarak yapılandırılmıştır.
 

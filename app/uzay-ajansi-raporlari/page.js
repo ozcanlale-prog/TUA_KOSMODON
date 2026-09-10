@@ -25,6 +25,7 @@ export default function UzayAjansiRaporlariPage() {
       date: lang === 'en' ? "September 04, 2026" : "04 Eylül 2026",
       code: "TR-2026-OPS-09",
       fileUrl: "/media/veriseti1.csv",
+      filename: "TUA-01_Yorunge_Raporu.csv",
       description: lang === 'en'
         ? "During orbit stabilization tests conducted under the command of Ankara Gölbaşı Ground Station, our national satellite's positioning deviation was zeroed and stabilized to its nominal operational altitude."
         : "Ankara Gölbaşı Yer İstasyonu komutasında gerçekleştirilen yörünge sabitleme testlerinde, millî uydumuzun konumlandırma sapması sıfırlanarak nominal operasyon irtifasına sabitlendi.",
@@ -43,6 +44,7 @@ export default function UzayAjansiRaporlariPage() {
       date: lang === 'en' ? "August 28, 2026" : "28 Ağustos 2026",
       code: "TR-2026-SAT-04",
       fileUrl: "/media/veriseti2.csv",
+      filename: "Milli_Gozlem_Spektral_Analiz.csv",
       description: lang === 'en'
         ? "Initial test frames taken from high-resolution optical cameras were transferred to TÜBİTAK UZAY clean room integration laboratory using encrypted protocols and verified."
         : "Yüksek çözünürlüklü optik kameralardan alınan ilk test kareleri, TÜBİTAK UZAY temiz oda entegrasyon laboratuvarına şifreli protokollerle aktarıldı ve doğrulandı.",
@@ -61,6 +63,7 @@ export default function UzayAjansiRaporlariPage() {
       date: lang === 'en' ? "August 15, 2026" : "15 Ağustos 2026",
       code: "TR-2026-DS-01",
       fileUrl: "/media/veriseti3.csv",
+      filename: "AYAP-1_Itki_Sistemi_Testleri.csv",
       description: lang === 'en'
         ? "The hybrid-fueled rocket engine prototype developed for deep space missions successfully achieved the targeted thrust force and thermal endurance in static firing tests."
         : "Derin uzay görevleri için geliştirilen hibrit yakıtlı roket motoru prototipi, statik ateşleme testlerinde hedeflenen itki kuvvetini ve termal dayanımı başarıyla sağladı.",
@@ -79,6 +82,7 @@ export default function UzayAjansiRaporlariPage() {
       date: lang === 'en' ? "August 02, 2026" : "02 Ağustos 2026",
       code: "TR-2026-SCI-12",
       fileUrl: "/media/veriseti4.csv",
+      filename: "ISS_Mikroyercekimi_Deneyleri.csv",
       description: lang === 'en'
         ? "Samples of biological material and crystallization experiments carried out with the participation of the Turkish space traveler were safely delivered to the laboratory for analysis."
         : "Türk uzay yolcısının katılımıyla gerçekleştirilen biyolojik malzeme ve kristalleştirme deneylerinin numuneleri güvenli bir şekilde analiz edilmek üzere laboratuvara teslim edildi.",
@@ -97,6 +101,7 @@ export default function UzayAjansiRaporlariPage() {
       date: lang === 'en' ? "July 20, 2026" : "20 Temmuz 2026",
       code: "TR-2026-ENV-08",
       fileUrl: "/media/veriseti5.csv",
+      filename: "Uzay_Hava_Van_Allen_Raporu.csv",
       description: lang === 'en'
         ? "First phase simulations of early warning algorithms established to measure the effects of solar flares and electromagnetic waves on satellite panels were completed."
         : "Güneş patlamaları ve elektromanyetik dalgaların uydu panelleri üzerindeki etkilerini ölçümlemek amacıyla kurulan erken uyarı algoritmalarının ilk faz simülasyonları tamamlandı.",
@@ -115,6 +120,7 @@ export default function UzayAjansiRaporlariPage() {
       date: lang === 'en' ? "July 10, 2026" : "10 Temmuz 2026",
       code: "TR-2026-SEC-03",
       fileUrl: "/media/veriseti6.csv",
+      filename: "Kuantum_Haberlesme_Fizibilite.csv",
       description: lang === 'en'
         ? "Infrastructure requirements for ground-satellite tests of quantum key distribution (QKD) technologies, which are unlistenable and mathematically unbreakable, were reported."
         : "Dinlenemez ve kırılması matematiksel olarak imkansız olan kuantum anahtarlama (QKD) teknolojilerinin yer-uydu testleri için altyapı gereksinimleri raporlandı.",
@@ -125,6 +131,25 @@ export default function UzayAjansiRaporlariPage() {
       }
     }
   ];
+
+  const handleDownload = async (e, url, filename) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = filename || 'rapor_dosyasi.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      console.error('İndirme hatası:', err);
+      window.open(url, '_blank');
+    }
+  };
 
   const filteredReports = activeCategory === 'all'
     ? reports
@@ -215,16 +240,15 @@ export default function UzayAjansiRaporlariPage() {
                   </div>
                   {lang === 'en' ? "Verified Record" : "Doğrulanmış Kayıt"}
                 </span>
-                <a 
-                  href={report.fileUrl} 
-                  download 
+                <button 
+                  onClick={(e) => handleDownload(e, report.fileUrl, report.filename)}
                   className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-black hover:bg-blue-600 border border-slate-900 hover:border-blue-500 text-slate-300 hover:text-white text-xs font-medium transition-all shadow-inner cursor-pointer"
                 >
                   <div className="w-5 h-5 rounded-lg bg-slate-900 flex items-center justify-center text-slate-400 shrink-0">
                     <Download className="w-3 h-3" />
                   </div>
-                  {lang === 'en' ? "Download PDF" : "PDF İndir"}
-                </a>
+                  {lang === 'en' ? "Download" : "İndir"}
+                </button>
               </div>
             </div>
           </div>

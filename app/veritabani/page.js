@@ -40,12 +40,16 @@ const localFileMap = {
     "DOC-004": "/media/resim4.jpeg",
     "DOC-005": "/media/resim5.jpeg",
     "DOC-006": "/media/resim6.jpeg",
-    "IMG-012": "/media/resim1.jpeg",
-    "IMG-014": "/media/resim2.jpeg",
-    "IMG-015": "/media/resim3.jpeg",
-    "IMG-016": "/media/resim4.jpeg",
-    "IMG-017": "/media/resim5.jpeg",
-    "IMG-018": "/media/resim6.jpeg",
+    "IMG-012": "/media/indir (12).png",
+    "IMG-014": "/media/indir (14).png",
+    "IMG-015": "/media/indir (15).png",
+    "IMG-016": "/media/indir (16).png",
+    "IMG-017": "/media/indir (17).png",
+    "IMG-018": "/media/indir (18).png",
+    "IMG-019": "/media/indir (19).png",
+    "IMG-020": "/media/indir (20).png",
+    "IMG-021": "/media/indir (21).png",
+    "IMG-AST": "/media/Astronaut Watching Sunrise Above Earth _ Spacewalk 4K Wallpaper.png",
     "DAT-SET-501": "/media/veriseti1.csv",
     "DAT-SET-502": "/media/veriseti2.csv",
     "DAT-SET-503": "/media/veriseti3.csv",
@@ -70,12 +74,51 @@ const fixedDocuments = [
   { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/resim6.jpeg' }
 ];
 
+// Uydu Görüntüleri için sabit liste
+const fixedImages = [
+  { id: 'IMG-AST', name: 'Dünya Üzerinde Gündoğumunu İzleyen Astronot', category: 'Yörünge Görseli', date: '18.08.2026', size: '12.4 MB', format: 'PNG', fileUrl: localFileMap["IMG-AST"], src: imgAstronaut, description: 'Uluslararası Uzay İstasyonu\'ndan çekilen yüksek çözünürlüklü gündoğumu manzarası.' },
+  { id: 'IMG-012', name: 'Anadolu Yarımadası Termal Uydu Katmanı', category: 'Termal Analiz', date: '16.08.2026', size: '15.8 MB', format: 'PNG', fileUrl: localFileMap["IMG-012"], src: img12, description: 'Göktürk-3 uydusu termal sensörlerinden elde edilen sıcaklık dağılım haritası.' },
+  { id: 'IMG-014', name: 'Karadeniz Kıyı Akıntıları Multispektral Gözlem', category: 'Oşinografi', date: '14.08.2026', size: '9.2 MB', format: 'PNG', fileUrl: localFileMap["IMG-014"], src: img14, description: 'Deniz suyu sıcaklığı ve plankton yoğunluğu multispektral uydu analizi.' },
+  { id: 'IMG-015', name: 'Orta Anadolu Tarımsal Kuraklık İndeksi', category: 'Tarım & Çevre', date: '12.08.2026', size: '11.0 MB', format: 'PNG', fileUrl: localFileMap["IMG-015"], src: img15, description: 'NDVI bitki örtüsü indeks verileriyle oluşturulmuş kuraklık analizi haritası.' },
+  { id: 'IMG-016', name: 'İzmir Körfezi Batimetrik Yüzey Modeli', category: 'Kıyı Yapısı', date: '10.08.2026', size: '14.1 MB', format: 'PNG', fileUrl: localFileMap["IMG-016"], src: img16, description: 'Radar altimetre ölçümleriyle çıkarılmış körfez derinlik topoğrafyası.' },
+  { id: 'IMG-017', name: 'Toros Dağları Kar Örtüsü ve Su Rezervi', category: 'Hidroloji', date: '08.08.2026', size: '13.5 MB', format: 'PNG', fileUrl: localFileMap["IMG-017"], src: img17, description: 'Kış sezonu sonu kütle hacim hesaplamaları için optik uydu kesiti.' },
+  { id: 'IMG-018', name: 'İstanbul Boğazı Gemi Trafik Yoğunluğu Radarı', category: 'Denetim', date: '05.08.2026', size: '8.9 MB', format: 'PNG', fileUrl: localFileMap["IMG-018"], src: img18, description: 'Sentetik Açıklıklı Radar (SAR) ile elde edilen boğaz transit geçiş yoğunluğu.' },
+  { id: 'IMG-019', name: 'Van Gölü Havzası Su Seviyesi Değişimi', category: 'Jeoloji', date: '02.08.2026', size: '10.3 MB', format: 'PNG', fileUrl: localFileMap["IMG-019"], src: img19, description: 'Son 5 yıllık uydu altimetri verilerine dayalı kıyı çizgisi değişim analizi.' },
+  { id: 'IMG-020', name: 'Ankara Kentleşme ve Isı Adası Dağılımı', category: 'Kentsel Analiz', date: '30.07.2026', size: '16.2 MB', format: 'PNG', fileUrl: localFileMap["IMG-020"], src: img20, description: 'Yüksek çözünürlüklü uydu verileriyle kentsel ısı adası modellemesi.' },
+  { id: 'IMG-021', name: 'Güneş Patlaması Koronal Kütle Atımı (CME)', category: 'Uzay Hava Durumu', date: '28.07.2026', size: '18.4 MB', format: 'PNG', fileUrl: localFileMap["IMG-021"], src: img21, description: 'Uzay hava gözlem uydularından kaydedilen yüksek enerjili koronal atım.' }
+];
+
+// Ham Veri Setleri için sabit liste
+const fixedDatasets = [
+  { id: 'DAT-SET-501', name: 'GPS/GNSS Yörünge Düzeltme Parametreleri (CSV)', category: 'Yörünge Verisi', date: '19.08.2026', size: '42.1 MB', format: 'CSV', fileUrl: '/media/veriseti1.csv' },
+  { id: 'DAT-SET-502', name: 'Atmosferik Gaz Yoğunluğu ve İyonosfer Ölçümleri (JSON)', category: 'Atmosfer', date: '17.08.2026', size: '28.6 MB', format: 'JSON', fileUrl: '/media/veriseti2.csv' },
+  { id: 'DAT-SET-503', name: 'Yer İstasyonu Sinyal Gürültü Oranı Zaman Serisi (CSV)', category: 'Telemetri', date: '14.08.2026', size: '19.4 MB', format: 'CSV', fileUrl: '/media/veriseti3.csv' },
+  { id: 'DAT-SET-504', name: 'Uydu İtki Sistemi Yakıt Tüketim Logları (JSON)', category: 'Mühendislik', date: '11.08.2026', size: '15.2 MB', format: 'JSON', fileUrl: '/media/veriseti4.csv' },
+  { id: 'DAT-SET-505', name: 'Spektral Bant Kalibrasyon Matris Verileri (CSV)', category: 'Sensör', date: '06.08.2026', size: '34.8 MB', format: 'CSV', fileUrl: '/media/veriseti5.csv' },
+  { id: 'DAT-SET-506', name: 'Derin Uzay Keşif Aracı Radyasyon Doz Raporu (JSON)', category: 'Radyasyon', date: '01.08.2026', size: '22.0 MB', format: 'JSON', fileUrl: '/media/veriseti6.csv' }
+];
+
+// Videolar için sabit liste
+const fixedVideos = [
+  { id: 'VID-TST-301', name: 'Milli Hibrit Roket Motoru Ateşleme Testi #4', category: 'Tahrik Testi', date: '15.08.2026', size: '240 MB', format: 'MP4', fileUrl: '/media/video1.mp4' },
+  { id: 'VID-TST-302', name: 'Uydu Ayrılma Mekanizması Vakum Odası Testi', category: 'Mekanik Test', date: '10.08.2026', size: '185 MB', format: 'MP4', fileUrl: '/media/video2.mp4' },
+  { id: 'VID-TST-303', name: 'Yüksek İrtifa Balon Atış Testi Görüntüleri', category: 'Fırlatma', date: '02.08.2026', size: '310 MB', format: 'MP4', fileUrl: '/media/video3.mp4' },
+  { id: 'VID-TST-304', name: 'Güneş Paneli Açılma ve Titreşim Simülasyonu', category: 'Çevresel Test', date: '25.07.2026', size: '150 MB', format: 'MP4', fileUrl: '/media/video4.mp4' },
+  { id: 'VID-TST-305', name: 'Anten Takip Sistemi Otomatik Kilitlenme Testi', category: 'Yer Sistemleri', date: '18.07.2026', size: '120 MB', format: 'MP4', fileUrl: '/media/video5.mp4' },
+  { id: 'VID-TST-306', name: 'Kritik Tasarım Gözden Geçirme Toplantı Özeti', category: 'Konferans', date: '10.07.2026', size: '95 MB', format: 'MP4', fileUrl: '/media/video6.mp4' }
+];
+
 export default function VeritabaniPage() {
   const { lang } = useLanguage();
   const [activeTab, setActiveTab] = useState('images');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
-  const [records, setRecords] = useState({ images: [], documents: fixedDocuments, videos: [], datasets: [] });
+  const [records, setRecords] = useState({ 
+    images: [...fixedImages], 
+    documents: [...fixedDocuments], 
+    videos: [...fixedVideos], 
+    datasets: [...fixedDatasets] 
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -84,10 +127,23 @@ export default function VeritabaniPage() {
         const { data, error } = await supabase.from('space_records').select('*');
         if (error) throw error;
 
-        const categorized = { images: [], documents: [...fixedDocuments], videos: [], datasets: [] };
+        const categorized = { 
+          images: [...fixedImages], 
+          documents: [...fixedDocuments], 
+          videos: [...fixedVideos], 
+          datasets: [...fixedDatasets] 
+        };
         
         if (data) {
           data.forEach(item => {
+            let targetType = item.file_type;
+            if (!targetType || !categorized[targetType]) {
+              if (item.id && (item.id.startsWith('IMG') || item.id.startsWith('AST'))) targetType = 'images';
+              else if (item.id && item.id.startsWith('DAT')) targetType = 'datasets';
+              else if (item.id && item.id.startsWith('VID')) targetType = 'videos';
+              else targetType = 'documents';
+            }
+
             const formattedItem = {
               id: item.id,
               name: item.name,
@@ -95,18 +151,10 @@ export default function VeritabaniPage() {
               date: item.date,
               size: item.size,
               format: item.format,
-              fileUrl: localFileMap[item.id] || item.file_url,
+              fileUrl: localFileMap[item.id] || item.file_url || (targetType === 'images' ? '/media/resim1.jpeg' : '#'),
               src: imageMap[item.id] || imgAstronaut,
               description: item.name
             };
-
-            let targetType = item.file_type;
-            if (!targetType || !categorized[targetType]) {
-              if (item.id && item.id.startsWith('IMG')) targetType = 'images';
-              else if (item.id && item.id.startsWith('DAT')) targetType = 'datasets';
-              else if (item.id && item.id.startsWith('VID')) targetType = 'videos';
-              else targetType = 'documents';
-            }
 
             if (categorized[targetType]) {
               if (!categorized[targetType].some(existing => existing.id === formattedItem.id)) {
@@ -236,7 +284,7 @@ export default function VeritabaniPage() {
                 onClick={() => setSelectedImage(item)}
               >
                 <img 
-                  src={item.src.src || item.src} 
+                  src={item.src?.src || item.src || imgAstronaut} 
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -363,7 +411,7 @@ export default function VeritabaniPage() {
             </div>
             <div className="p-6 flex flex-col items-center justify-center bg-slate-950 gap-4">
               <img 
-                src={selectedImage.src.src || selectedImage.src} 
+                src={selectedImage.src?.src || selectedImage.src || imgAstronaut} 
                 alt={selectedImage.name} 
                 className="max-h-[60vh] object-contain rounded-xl border border-slate-800"
               />

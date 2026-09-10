@@ -151,11 +151,3 @@ https://github.com/user-attachments/assets/b788ea9a-604a-4c1d-8bd4-a571ba63bb92
 
 ---
 
-##  Kurulum ve Yerel Çalıştırma
-
-Projeyi kendi bilgisayarınızda (local) ayağa kaldırmak için adım adım takip edebileceğiniz rehber:
-
-1. **Repoyu klonlayın:**
-   ```bash
-   git clone [https://github.com/ozcanlale-prog/TUA_KOSMODON.git](https://github.com/ozcanlale-prog/TUA_KOSMODON.git)
-   cd TUA_KOSMODON

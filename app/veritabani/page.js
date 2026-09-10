@@ -542,12 +542,13 @@ export default function VeritabaniPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-slate-800/80 font-mono text-[11px]">
                   <span className="text-slate-400">{item.size} • <strong className="text-blue-400">{item.format}</strong></span>
-                  <button 
-                    onClick={() => setSelectedImage(item)}
+                  <a 
+                    href={item.fileUrl} 
+                    download
                     className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner cursor-pointer"
                   >
-                    <Eye className="w-3 h-3 text-blue-400" /> {lang === 'en' ? "Inspect" : "İncele"}
-                  </button>
+                    <Download className="w-3 h-3" /> {lang === 'en' ? "Download" : "İndir"}
+                  </a>
                 </div>
               </div>
 

@@ -1,44 +1,81 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Database, Search, ShieldCheck, FileText, Image as ImageIcon, Video, FileSpreadsheet, Download, HardDrive, Eye, X } from 'lucide-react';
 import { useLanguage } from '../components/Providers';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 import imgAstronaut from './media/Astronaut Watching Sunrise Above Earth _ Spacewalk 4K Wallpaper.png';
+import img12 from './media/indir (12).png';
+import img14 from './media/indir (14).png';
+import img15 from './media/indir (15).png';
+import img16 from './media/indir (16).png';
+import img17 from './media/indir (17).png';
+import img18 from './media/indir (18).png';
+import img19 from './media/indir (19).png';
+import img20 from './media/indir (20).png';
+import img21 from './media/indir (21).png';
+
+const imageMap = {
+    "IMG-AST": imgAstronaut,
+    "IMG-012": img12,
+    "IMG-014": img14,
+    "IMG-015": img15,
+    "IMG-016": img16,
+    "IMG-017": img17,
+    "IMG-018": img18,
+    "IMG-019": img19,
+    "IMG-020": img20,
+    "IMG-021": img21,
+};
 
 export default function VeritabaniPage() {
   const { lang } = useLanguage();
   const [activeTab, setActiveTab] = useState('images');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
+  const [records, setRecords] = useState({ images: [], documents: [], videos: [], datasets: [] });
+  const [loading, setLoading] = useState(true);
 
-  // Canlıda 404 hatasını önlemek için doğrudan güvenli Google Drive indirme linkleri
-  const records = {
-    images: [
-      { id: 'IMG-012', name: 'Yıldız Kümesi ve Kozmik Toz Bulutu', category: 'Astrofizik', date: '26.08.2026', size: '7.4 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=12lnR2prQEPF4CmbL_Ke_-Tx8iL8oYqTq', src: '/media/resim1.jpeg', description: 'Yıldız Kümesi ve Kozmik Toz Bulutu yüksek çözünürlüklü uydu görseli.' },
-      { id: 'IMG-014', name: 'Jüpiter Bulut Kuşakları', category: 'Gezegenler', date: '28.08.2026', size: '5.9 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1MgIXPiFzyWNq9IB-oEHatSGdWlsEXiHA', src: '/media/resim2.jpeg', description: 'Jüpiter atmosferik bulut kuşakları detaylı gözlem karesi.' },
-      { id: 'IMG-015', name: 'Ay Yüzeyi Detaylı Topografya', category: 'Uydu Yüzeyi', date: '29.08.2026', size: '4.8 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1oUb1qfudymC-dh-04c8aqvbuyhxGFFAY', src: '/media/resim3.jpeg', description: 'Ay yüzeyi kraterleri ve detaylı topografik haritalama görseli.' },
-      { id: 'IMG-016', name: 'Halkalı Gezegen ve Uydusu', category: 'Gezegenler', date: '30.08.2026', size: '6.2 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=181b787rmE0f746bSDCUOkz-Oxr148XA-', src: '/media/resim4.jpeg', description: 'Satürn benzeri halkalı gezegen ve yörünge uydusu.' },
-      { id: 'IMG-017', name: 'Alçak Dünya Yörüngesinde Uydu Modülü', category: 'Donanım', date: '01.09.2026', size: '5.5 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1-sX75eytd0CYR4s9sTV3dI_YITaPoNo3', src: '/media/resim5.jpeg', description: 'Alçak Dünya yörüngesinde görev yapan yerli uydu modülü.' },
-      { id: 'IMG-018', name: 'Atmosferik Siklon ve Bulut Yapılanması', category: 'Meteoroloji', date: '03.09.2026', size: '4.9 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1qUFNhlyL4nLZ36Rns_zq7488v6tAX2U5', src: '/media/resim6.jpeg', description: 'Uydu kamerasından yansıyan büyük ölçekli atmosferik siklon yapısı.' }
-    ],
-    datasets: [
-      { id: 'DAT-SET-501', name: 'Van Allen Radyasyon Kuşağı Zaman Serisi Yoğunluk Matrisi', category: 'Bilimsel Veri', date: '06.09.2026', size: '45 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1BP4K9tD2GCs1KAnniUMw0KRYio5BOU7y' },
-      { id: 'DAT-SET-502', name: 'GÖKTÜRK-3 İki Satırlı Yörünge Elemanları (TLE Günlük Arşivi)', category: 'Telemetri', date: '07.09.2026', size: '2.1 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1jJ7Rto8jmsxGb2ifl6shylydPILN_zb4' },
-      { id: 'DAT-SET-503', name: 'Ankara Yer İstasyonu Sinyal Gürültü Oranı (SNR) Kayıtları', category: 'Operasyonel', date: '05.09.2026', size: '88 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=14Z5UGwH5dmE1cSiM2LQfz3KTDSAZtQ0r' },
-      { id: 'DAT-SET-504', name: 'Güneş Fırtınası ve Jeomanyetik Bozulma İndeks Veritabanı', category: 'Uzay Hava', date: '30.08.2026', size: '34 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1KsJlj0xHszKNS2vAaxIqICYs4sJNQvj7' },
-      { id: 'DAT-SET-505', name: 'Hibrit Motor Yakıt Basıncı ve Sıcaklık Sensör Zaman Serileri', category: 'Mühendislik', date: '15.08.2026', size: '120 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1agsxIBgzWiIgrBdy1YhrLJecNYwCBYOo' },
-      { id: 'DAT-SET-506', name: 'Atmosferik Gaz Yoğunluğu ve İyonosferik Katman Ölçümleri', category: 'Bilimsel Veri', date: '10.08.2026', size: '56 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=13lKjXq1IZVpAy7Y5hHXxIhSbCY4LxuVM' }
-    ],
-    videos: [
-      { id: 'VID-TST-301', name: '50 kN Hibrit Roket Motoru Statik Ateşleme Testi (Tam Süre)', category: 'Test Kaydı', date: '15.08.2026', size: '1.2 GB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1bHzGMVH9jZ9XpLQpaDQ7d2oXTDPAiW8v' },
-      { id: 'VID-TST-302', name: 'TÜRKSAT-6A Yapısal Titreşim ve Vibe Testi Simülasyonu', category: 'Mühendislik', date: '10.07.2026', size: '850 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1cwnLGqqTLgX0wVwX8a7tnblPrzPPDzma' },
-      { id: 'VID-TST-303', name: 'Ankara Gölbaşı Ana Anten Otomasyon ve Sinyal Kilitlenme Anı', category: 'Sistem Kaydı', date: '01.07.2026', size: '420 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1jOZtM5X1r3Ke9Xq-QlVG4K4s5lC55WZe' },
-      { id: 'VID-TST-304', name: 'Temiz Oda Uydu Entegrasyon ve Mekanik Kol Montaj Süreci', category: 'Entegrasyon', date: '18.06.2026', size: '1.5 GB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1J0K431rYWRD6zc5On4SoMK2SBCbaYPdf' },
-      { id: 'VID-TST-305', name: 'Yüksek İrtifa Basınç Odası Valf Testleri ve Dayanım Analizi', category: 'Test Kaydı', date: '02.06.2026', size: '640 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1_HgTPNWgUzYQ1a9XOimgeTeK7x-H1lt_' },
-      { id: 'VID-TST-306', name: 'Gök Olayları Gözlem Teleskobu Otomatik Konumlanma Testi', category: 'Optik Test', date: '15.05.2026', size: '510 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1FR7Yal0vy2jML-cIjqINoomCtdadhSyz' }
-    ],
-    documents: []
-  };
+  useEffect(() => {
+    async function fetchRecords() {
+      try {
+        const { data, error } = await supabase.from('space_records').select('*');
+        if (error) throw error;
+
+        const categorized = { images: [], documents: [], videos: [], datasets: [] };
+        
+        data.forEach(item => {
+          const formattedItem = {
+            id: item.id,
+            name: item.name,
+            category: item.category,
+            date: item.date,
+            size: item.size,
+            format: item.format,
+            fileUrl: item.file_url,
+            src: imageMap[item.id] || imgAstronaut,
+            description: item.name
+          };
+
+          if (categorized[item.file_type]) {
+            categorized[item.file_type].push(formattedItem);
+          }
+        });
+
+        setRecords(categorized);
+      } catch (err) {
+        console.error('Veri çekme hatası:', err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchRecords();
+  }, []);
 
   const tabs = [
     { id: 'images', label: lang === 'en' ? 'Satellite Images' : 'Uydu Görüntüleri', count: records.images.length, icon: ImageIcon },
@@ -135,7 +172,11 @@ export default function VeritabaniPage() {
         </div>
       </div>
 
-      {activeTab === 'images' ? (
+      {loading ? (
+        <div className="text-center py-20 text-slate-500 font-mono text-xs">
+          {lang === 'en' ? "Connecting to Supabase Database..." : "Supabase Veritabanına Bağlanılıyor..."}
+        </div>
+      ) : activeTab === 'images' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredList.map((item, idx) => (
             <div key={idx} className="bg-[#030712] border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col justify-between">
@@ -145,7 +186,7 @@ export default function VeritabaniPage() {
                 onClick={() => setSelectedImage(item)}
               >
                 <img 
-                  src={item.src} 
+                  src={item.src.src || item.src} 
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -177,14 +218,12 @@ export default function VeritabaniPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-slate-800/80 font-mono text-[11px]">
                   <span className="text-slate-400">{item.size} • <strong className="text-blue-400">{item.format}</strong></span>
-                  <a 
-                    href={item.fileUrl} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner cursor-pointer"
+                  <button 
+                    onClick={() => setSelectedImage(item)}
+                    className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner"
                   >
-                    <Download className="w-3 h-3" /> {lang === 'en' ? "Download" : "İndir"}
-                  </a>
+                    <Download className="w-3 h-3" /> {lang === 'en' ? "Inspect" : "İncele"}
+                  </button>
                 </div>
               </div>
 
@@ -234,7 +273,7 @@ export default function VeritabaniPage() {
                     href={item.fileUrl} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all"
                   >
                     <Download className="w-3 h-3 text-slate-400" />
                     {lang === 'en' ? "Download" : "İndir"}
@@ -251,7 +290,7 @@ export default function VeritabaniPage() {
       <div className="bg-black border border-slate-800 px-6 py-3.5 rounded-xl mt-6 flex items-center justify-between text-[11px] text-slate-500 font-mono">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>{lang === 'en' ? "Turkish Space Agency Official Data Pool • Cloud Archive" : "Türkiye Uzay Ajansı Resmi Veri Havuzu • Bulut Arşivi"}</span>
+          <span>{lang === 'en' ? "Turkish Space Agency Official Data Pool • Supabase Cloud" : "Türkiye Uzay Ajansı Resmi Veri Havuzu • Supabase Bulut"}</span>
         </div>
         <span>{lang === 'en' ? "Access Permission: Public / Researcher" : "Erişim Yetkisi: Kamu / Araştırmacı"}</span>
       </div>
@@ -274,7 +313,7 @@ export default function VeritabaniPage() {
             </div>
             <div className="p-6 flex flex-col items-center justify-center bg-slate-950 gap-4">
               <img 
-                src={selectedImage.src} 
+                src={selectedImage.src.src || selectedImage.src} 
                 alt={selectedImage.name} 
                 className="max-h-[60vh] object-contain rounded-xl border border-slate-800"
               />

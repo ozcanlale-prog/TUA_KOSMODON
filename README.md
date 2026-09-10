@@ -13,6 +13,28 @@
 
 ---
 
+## 🎥 Proje Tanıtım Videosu & Canlı Akış
+> *Aşağıdaki video kaydında projenin modern arayüz tasarımı, akıcı tema geçişleri, veritabanı sekmeleri arası geçişler ve modal önizleme özellikleri çalışırken gösterilmektedir.*
+
+<p align="center">
+  <img src="./public/media/demo-video.gif" alt="TUA Kosmodon Tanıtım Videosu" width="100%" />
+</p>
+
+---
+
+## 📸 Arayüz & Görsel Önizlemeler
+
+> *Platformun farklı modüllerinden ve kurumsal tasarım çizgilerinden detay kareler:*
+
+<p align="center">
+  <img src="./public/media/homepage-preview.png" alt="Ana Sayfa Görünümü" width="48%" />
+  <img src="./public/media/database-preview.png" alt="Merkezi Veritabanı Arayüzü" width="48%" />
+</p>
+
+* **Görsel Tasarım Detayları:** Arayüzde `#030712` bazlı koyu uzay teması, cam efekti (`backdrop-blur`), özel cerulean mavi vurgular (`#3b82f6`) ve monospaced teknik veri etiketleri kullanılarak profesyonel bir kurum kimliği oluşturulmuştur.
+
+---
+
 ## 📌 Proje Hakkında
 
 **TUA KOSMODON**, Türkiye Uzay Ajansı'nın vizyoner misyonundan ilham alınarak geliştirilmiş; araştırmacılar, mühendisler ve uzay meraklıları için tasarlanmış kurumsal bir web portalıdır. Modern web teknolojileriyle inşa edilen platform; kurum bünyesinde üretilen stratejik resmi belgeleri, yörünge veri setlerini, yüksek çözünürlüklü uydu görüntülerini ve fırlatma test kayıtlarını tek bir merkezi havuzda toplar.
@@ -25,7 +47,7 @@ Proje; bulut tabanlı **Supabase Cloud** veritabanı altyapısı, kesintisiz ver
 
 ### 🗄️ 1. Merkezi Veritabanı Arşivi (`/veritabani`)
 Toplam **24.8 Terabyte** arşiv hacmini simüle eden, kategorize edilmiş dinamik veri yönetim paneli:
-* 🛰️ **Uydu Görüntüleri:** Yeryüzü gözlem verileri, multispektral haritalar, termal analizler ve *Lightbox* entegrasyonlu büyük boyutlu görsel önizleme modülü.
+* 🛰️ **Uydu Görüntüleri:** Yeryüzü gözlem verileri, multispektral haritalar, termal analizler ve *Lightbox* (büyük boyutlu görsel inceleme) entegrasyonlu detay modülü.
 * 📄 **Resmi Belgeler & Raporlar:** Stratejik planlar, teknik şartnameler ve yörünge mekaniği analiz raporları.
 * 🎬 **Fırlatma & Test Videoları:** Milli hibrit roket motoru ateşleme testleri, vakum odası simülasyonları ve yüksek iştirakli atış kayıtları.
 * 📊 **Ham Veri Setleri (CSV / JSON):** GNSS yörünge düzeltme parametreleri, atmosferik gaz yoğunlukları ve telemetri zaman serileri.

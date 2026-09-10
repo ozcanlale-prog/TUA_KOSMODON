@@ -32,7 +32,7 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Supabase'den gelen ID'leri doğrudan public/media/ klasöründeki yerel dosyalara eşleyen harita
+// Tüm ID'leri doğru yerel dosya yollarına eşleyen harita (Resimler için resimX.jpeg)
 const localFileMap = {
     "IMG-012": "/media/resim1.jpeg",
     "IMG-014": "/media/resim2.jpeg",

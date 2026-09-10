@@ -42,13 +42,29 @@ Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için k
 ### 1. 🌟 Canlı Arka Plan Yıldız ve Yörünge Efektleri
 * **Açıklama:** Ana sayfa ve veritabanı arayüzünde akıcı geçişler sağlayan CSS/Tailwind tabanlı parlayan yıldız animasyonları ve nabız efektleri (`animate-pulse`).
 
-> 🎬 *Buraya arkaplan animasyonunun veya akışın çalışırken kaydedilmiş videosunu/GIF'ini ekleyebilirsin:*
+> 
+
+https://github.com/user-attachments/assets/1967bc72-5641-49bd-a79e-983aedba7ba7
+
+ 
 > `<p align="center"><img src="./public/media/animation-bg.gif" alt="Arkaplan Animasyonları" width="90%" /></p>`
 
 ### 2. ⚡ Modal ve Lightbox Geçiş Animasyonları
 * **Açıklama:** Uydu görsellerine tıklandığında açılan büyük boyutlu önizleme pencerelerinin (Lightbox) arka planı bulanıklaştıran (`backdrop-blur-md`) ve yumuşak geçiş yapan animasyon yapısı.
 
-> 🎬 *Buraya Lightbox modal açılış animasyonunun videosunu/GIF'ini ekleyebilirsin:*
+> 🎬 
+
+https://github.com/user-attachments/assets/55797afc-ee57-4588-9c9c-36c07d2f4420
+
+
+
+https://github.com/user-attachments/assets/800637a5-270d-46a0-9fd6-0230d7aa734a
+
+
+
+https://github.com/user-attachments/assets/4c7c22a4-ca1f-4156-84fb-9bc6819a78e8
+
+
 > `<p align="center"><img src="./public/media/animation-modal.gif" alt="Modal Açılış Animasyonu" width="90%" /></p>`
 
 ---

@@ -41,7 +41,7 @@ https://github.com/user-attachments/assets/5e158d28-d057-48a7-a523-8a8a9d677c9f
 
 Projede kullanıcı deneyimini artırmak ve uzay temasını pekiştirmek için kullanılan dinamik animasyonlar:
 
-### 1. 🌟 Canlı Arka Plan Yıldız ve Yörünge Efektleri
+### 1.  Canlı Arka Plan Yıldız ve Yörünge Efektleri
 * **Açıklama:** Ana sayfa ve veritabanı arayüzünde akıcı geçişler sağlayan CSS/Tailwind tabanlı parlayan yıldız animasyonları ve nabız efektleri (`animate-pulse`).
 
  https://github.com/user-attachments/assets/1967bc72-5641-49bd-a79e-983aedba7ba7

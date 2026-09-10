@@ -9,6 +9,9 @@ export const metadata = {
   description: 'Türkiye Uzay Ajansı Vizyonuyla Dijital Bilgi Ağı, Millî Uzay Programı ve Uzay Teknolojileri Platformu',
   keywords: ['TUA', 'Türkiye Uzay Ajansı', 'Kosmodon', 'Uzay Portalı', 'Millî Uzay Programı', 'Alper Gezeravcı', 'Tuva Cihangir Atasever', 'Kutup Yıldızı AI'],
   authors: [{ name: 'TUA KOSMODON Ekibi' }],
+  verification: {
+    google: 'XXKtdxPAFKEZL10T3rXrrhXO4gGjzU8p5Gjx3OM435w',
+  },
   openGraph: {
     title: 'TUA KOSMODON | Ulusal Uzay Portalı',
     description: 'Türkiye Uzay Ajansı Vizyonuyla Dijital Bilgi Ağı ve Akıllı Uzay Asistanı',

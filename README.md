@@ -15,7 +15,7 @@
 
 ##  Proje Tanıtım Videosu & Canlı Akış
 
->https://github.com/user-attachments/assets/5e158d28-d057-48a7-a523-8a8a9d677c9f
+https://github.com/user-attachments/assets/5e158d28-d057-48a7-a523-8a8a9d677c9f
 <p align="center">
   <video src="./public/media/webvideosu.mp4" width="100%" autoplay loop muted playsinline controls></video>
 </p>

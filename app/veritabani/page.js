@@ -11,31 +11,31 @@ export default function VeritabaniPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Veritabanı yerine doğrudan yerel public/media/ dosyalarına bağlı statik ve kusursuz veri seti
+  // Canlıda 404 hatasını önlemek için doğrudan güvenli Google Drive indirme linkleri
   const records = {
     images: [
-      { id: 'IMG-012', name: 'Yıldız Kümesi ve Kozmik Toz Bulutu', category: 'Astrofizik', date: '26.08.2026', size: '7.4 MB', format: 'JPEG', fileUrl: '/media/resim1.jpeg', src: '/media/resim1.jpeg', description: 'Yıldız Kümesi ve Kozmik Toz Bulutu yüksek çözünürlüklü uydu görseli.' },
-      { id: 'IMG-014', name: 'Jüpiter Bulut Kuşakları', category: 'Gezegenler', date: '28.08.2026', size: '5.9 MB', format: 'JPEG', fileUrl: '/media/resim2.jpeg', src: '/media/resim2.jpeg', description: 'Jüpiter atmosferik bulut kuşakları detaylı gözlem karesi.' },
-      { id: 'IMG-015', name: 'Ay Yüzeyi Detaylı Topografya', category: 'Uydu Yüzeyi', date: '29.08.2026', size: '4.8 MB', format: 'JPEG', fileUrl: '/media/resim3.jpeg', src: '/media/resim3.jpeg', description: 'Ay yüzeyi kraterleri ve detaylı topografik haritalama görseli.' },
-      { id: 'IMG-016', name: 'Halkalı Gezegen ve Uydusu', category: 'Gezegenler', date: '30.08.2026', size: '6.2 MB', format: 'JPEG', fileUrl: '/media/resim4.jpeg', src: '/media/resim4.jpeg', description: 'Satürn benzeri halkalı gezegen ve yörünge uydusu.' },
-      { id: 'IMG-017', name: 'Alçak Dünya Yörüngesinde Uydu Modülü', category: 'Donanım', date: '01.09.2026', size: '5.5 MB', format: 'JPEG', fileUrl: '/media/resim5.jpeg', src: '/media/resim5.jpeg', description: 'Alçak Dünya yörüngesinde görev yapan yerli uydu modülü.' },
-      { id: 'IMG-018', name: 'Atmosferik Siklon ve Bulut Yapılanması', category: 'Meteoroloji', date: '03.09.2026', size: '4.9 MB', format: 'JPEG', fileUrl: '/media/resim6.jpeg', src: '/media/resim6.jpeg', description: 'Uydu kamerasından yansıyan büyük ölçekli atmosferik siklon yapısı.' }
+      { id: 'IMG-012', name: 'Yıldız Kümesi ve Kozmik Toz Bulutu', category: 'Astrofizik', date: '26.08.2026', size: '7.4 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=12lnR2prQEPF4CmbL_Ke_-Tx8iL8oYqTq', src: '/media/resim1.jpeg', description: 'Yıldız Kümesi ve Kozmik Toz Bulutu yüksek çözünürlüklü uydu görseli.' },
+      { id: 'IMG-014', name: 'Jüpiter Bulut Kuşakları', category: 'Gezegenler', date: '28.08.2026', size: '5.9 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1MgIXPiFzyWNq9IB-oEHatSGdWlsEXiHA', src: '/media/resim2.jpeg', description: 'Jüpiter atmosferik bulut kuşakları detaylı gözlem karesi.' },
+      { id: 'IMG-015', name: 'Ay Yüzeyi Detaylı Topografya', category: 'Uydu Yüzeyi', date: '29.08.2026', size: '4.8 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1oUb1qfudymC-dh-04c8aqvbuyhxGFFAY', src: '/media/resim3.jpeg', description: 'Ay yüzeyi kraterleri ve detaylı topografik haritalama görseli.' },
+      { id: 'IMG-016', name: 'Halkalı Gezegen ve Uydusu', category: 'Gezegenler', date: '30.08.2026', size: '6.2 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=181b787rmE0f746bSDCUOkz-Oxr148XA-', src: '/media/resim4.jpeg', description: 'Satürn benzeri halkalı gezegen ve yörünge uydusu.' },
+      { id: 'IMG-017', name: 'Alçak Dünya Yörüngesinde Uydu Modülü', category: 'Donanım', date: '01.09.2026', size: '5.5 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1-sX75eytd0CYR4s9sTV3dI_YITaPoNo3', src: '/media/resim5.jpeg', description: 'Alçak Dünya yörüngesinde görev yapan yerli uydu modülü.' },
+      { id: 'IMG-018', name: 'Atmosferik Siklon ve Bulut Yapılanması', category: 'Meteoroloji', date: '03.09.2026', size: '4.9 MB', format: 'JPEG', fileUrl: 'https://drive.google.com/uc?export=download&id=1qUFNhlyL4nLZ36Rns_zq7488v6tAX2U5', src: '/media/resim6.jpeg', description: 'Uydu kamerasından yansıyan büyük ölçekli atmosferik siklon yapısı.' }
     ],
     datasets: [
-      { id: 'DAT-SET-501', name: 'Van Allen Radyasyon Kuşağı Zaman Serisi Yoğunluk Matrisi', category: 'Bilimsel Veri', date: '06.09.2026', size: '45 MB', format: 'CSV', fileUrl: '/media/veriseti1.csv' },
-      { id: 'DAT-SET-502', name: 'GÖKTÜRK-3 İki Satırlı Yörünge Elemanları (TLE Günlük Arşivi)', category: 'Telemetri', date: '07.09.2026', size: '2.1 MB', format: 'CSV', fileUrl: '/media/veriseti2.csv' },
-      { id: 'DAT-SET-503', name: 'Ankara Yer İstasyonu Sinyal Gürültü Oranı (SNR) Kayıtları', category: 'Operasyonel', date: '05.09.2026', size: '88 MB', format: 'CSV', fileUrl: '/media/veriseti3.csv' },
-      { id: 'DAT-SET-504', name: 'Güneş Fırtınası ve Jeomanyetik Bozulma İndeks Veritabanı', category: 'Uzay Hava', date: '30.08.2026', size: '34 MB', format: 'CSV', fileUrl: '/media/veriseti4.csv' },
-      { id: 'DAT-SET-505', name: 'Hibrit Motor Yakıt Basıncı ve Sıcaklık Sensör Zaman Serileri', category: 'Mühendislik', date: '15.08.2026', size: '120 MB', format: 'CSV', fileUrl: '/media/veriseti5.csv' },
-      { id: 'DAT-SET-506', name: 'Atmosferik Gaz Yoğunluğu ve İyonosferik Katman Ölçümleri', category: 'Bilimsel Veri', date: '10.08.2026', size: '56 MB', format: 'CSV', fileUrl: '/media/veriseti6.csv' }
+      { id: 'DAT-SET-501', name: 'Van Allen Radyasyon Kuşağı Zaman Serisi Yoğunluk Matrisi', category: 'Bilimsel Veri', date: '06.09.2026', size: '45 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1BP4K9tD2GCs1KAnniUMw0KRYio5BOU7y' },
+      { id: 'DAT-SET-502', name: 'GÖKTÜRK-3 İki Satırlı Yörünge Elemanları (TLE Günlük Arşivi)', category: 'Telemetri', date: '07.09.2026', size: '2.1 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1jJ7Rto8jmsxGb2ifl6shylydPILN_zb4' },
+      { id: 'DAT-SET-503', name: 'Ankara Yer İstasyonu Sinyal Gürültü Oranı (SNR) Kayıtları', category: 'Operasyonel', date: '05.09.2026', size: '88 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=14Z5UGwH5dmE1cSiM2LQfz3KTDSAZtQ0r' },
+      { id: 'DAT-SET-504', name: 'Güneş Fırtınası ve Jeomanyetik Bozulma İndeks Veritabanı', category: 'Uzay Hava', date: '30.08.2026', size: '34 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1KsJlj0xHszKNS2vAaxIqICYs4sJNQvj7' },
+      { id: 'DAT-SET-505', name: 'Hibrit Motor Yakıt Basıncı ve Sıcaklık Sensör Zaman Serileri', category: 'Mühendislik', date: '15.08.2026', size: '120 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=1agsxIBgzWiIgrBdy1YhrLJecNYwCBYOo' },
+      { id: 'DAT-SET-506', name: 'Atmosferik Gaz Yoğunluğu ve İyonosferik Katman Ölçümleri', category: 'Bilimsel Veri', date: '10.08.2026', size: '56 MB', format: 'CSV', fileUrl: 'https://drive.google.com/uc?export=download&id=13lKjXq1IZVpAy7Y5hHXxIhSbCY4LxuVM' }
     ],
     videos: [
-      { id: 'VID-TST-301', name: '50 kN Hibrit Roket Motoru Statik Ateşleme Testi (Tam Süre)', category: 'Test Kaydı', date: '15.08.2026', size: '1.2 GB', format: 'MP4', fileUrl: '/media/video1.mp4' },
-      { id: 'VID-TST-302', name: 'TÜRKSAT-6A Yapısal Titreşim ve Vibe Testi Simülasyonu', category: 'Mühendislik', date: '10.07.2026', size: '850 MB', format: 'MP4', fileUrl: '/media/video2.mp4' },
-      { id: 'VID-TST-303', name: 'Ankara Gölbaşı Ana Anten Otomasyon ve Sinyal Kilitlenme Anı', category: 'Sistem Kaydı', date: '01.07.2026', size: '420 MB', format: 'MP4', fileUrl: '/media/video3.mp4' },
-      { id: 'VID-TST-304', name: 'Temiz Oda Uydu Entegrasyon ve Mekanik Kol Montaj Süreci', category: 'Entegrasyon', date: '18.06.2026', size: '1.5 GB', format: 'MP4', fileUrl: '/media/video4.mp4' },
-      { id: 'VID-TST-305', name: 'Yüksek İrtifa Basınç Odası Valf Testleri ve Dayanım Analizi', category: 'Test Kaydı', date: '02.06.2026', size: '640 MB', format: 'MP4', fileUrl: '/media/video5.mp4' },
-      { id: 'VID-TST-306', name: 'Gök Olayları Gözlem Teleskobu Otomatik Konumlanma Testi', category: 'Optik Test', date: '15.05.2026', size: '510 MB', format: 'MP4', fileUrl: '/media/video6.mp4' }
+      { id: 'VID-TST-301', name: '50 kN Hibrit Roket Motoru Statik Ateşleme Testi (Tam Süre)', category: 'Test Kaydı', date: '15.08.2026', size: '1.2 GB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1bHzGMVH9jZ9XpLQpaDQ7d2oXTDPAiW8v' },
+      { id: 'VID-TST-302', name: 'TÜRKSAT-6A Yapısal Titreşim ve Vibe Testi Simülasyonu', category: 'Mühendislik', date: '10.07.2026', size: '850 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1cwnLGqqTLgX0wVwX8a7tnblPrzPPDzma' },
+      { id: 'VID-TST-303', name: 'Ankara Gölbaşı Ana Anten Otomasyon ve Sinyal Kilitlenme Anı', category: 'Sistem Kaydı', date: '01.07.2026', size: '420 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1jOZtM5X1r3Ke9Xq-QlVG4K4s5lC55WZe' },
+      { id: 'VID-TST-304', name: 'Temiz Oda Uydu Entegrasyon ve Mekanik Kol Montaj Süreci', category: 'Entegrasyon', date: '18.06.2026', size: '1.5 GB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1J0K431rYWRD6zc5On4SoMK2SBCbaYPdf' },
+      { id: 'VID-TST-305', name: 'Yüksek İrtifa Basınç Odası Valf Testleri ve Dayanım Analizi', category: 'Test Kaydı', date: '02.06.2026', size: '640 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1_HgTPNWgUzYQ1a9XOimgeTeK7x-H1lt_' },
+      { id: 'VID-TST-306', name: 'Gök Olayları Gözlem Teleskobu Otomatik Konumlanma Testi', category: 'Optik Test', date: '15.05.2026', size: '510 MB', format: 'MP4', fileUrl: 'https://drive.google.com/uc?export=download&id=1FR7Yal0vy2jML-cIjqINoomCtdadhSyz' }
     ],
     documents: []
   };
@@ -179,7 +179,8 @@ export default function VeritabaniPage() {
                   <span className="text-slate-400">{item.size} • <strong className="text-blue-400">{item.format}</strong></span>
                   <a 
                     href={item.fileUrl} 
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner cursor-pointer"
                   >
                     <Download className="w-3 h-3" /> {lang === 'en' ? "Download" : "İndir"}
@@ -231,7 +232,8 @@ export default function VeritabaniPage() {
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
                   <a 
                     href={item.fileUrl} 
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all cursor-pointer"
                   >
                     <Download className="w-3 h-3 text-slate-400" />
@@ -249,7 +251,7 @@ export default function VeritabaniPage() {
       <div className="bg-black border border-slate-800 px-6 py-3.5 rounded-xl mt-6 flex items-center justify-between text-[11px] text-slate-500 font-mono">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>{lang === 'en' ? "Turkish Space Agency Official Data Pool • Local Storage" : "Türkiye Uzay Ajansı Resmi Veri Havuzu • Yerel Depolama"}</span>
+          <span>{lang === 'en' ? "Turkish Space Agency Official Data Pool • Cloud Archive" : "Türkiye Uzay Ajansı Resmi Veri Havuzu • Bulut Arşivi"}</span>
         </div>
         <span>{lang === 'en' ? "Access Permission: Public / Researcher" : "Erişim Yetkisi: Kamu / Araştırmacı"}</span>
       </div>

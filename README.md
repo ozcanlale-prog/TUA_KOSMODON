@@ -45,7 +45,7 @@ Proje; bulut tabanlı **Supabase Cloud** veritabanı altyapısı, kesintisiz ver
 
 ## 🛠️ Mimari, API ve Veritabanı Entegrasyon Noktaları
 
-Projenin arka plan mimarisinde verilerin çekildiği, API'lerin bağlandığı ve veritabanı tablolarının yönetildiği kritik noktalar şunlardır:
+Projenin arka plan mimarisinde verilerin çekildiği, harici servislerden anlık konum verilerinin alındığı ve veritabanı tablolarının yönetildiği kritik noktalar şunlardır:
 
 ### 1. 🗄️ Supabase Veritabanı Paneli (`space_records` Tablosu)
 * **Kullanıldığı Yer:** Projedeki uydu görüntüleri, resmi belgeler, videolar ve veri setleri Supabase üzerindeki `space_records` tablosunda merkezi olarak saklanır.
@@ -58,8 +58,16 @@ Projenin arka plan mimarisinde verilerin çekildiği, API'lerin bağlandığı v
 * **Kullanıldığı Yer:** `app/veritabani/page.tsx` dosyasının başında ve ilgili servis katmanlarında.
 * **Nasıl Çalışır:** `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` çevre değişkenleri (environment variables) kullanılarak istemci güvenli bir şekilde Supabase bulut sunucusuna bağlanır.
 
-> 💻 *Buraya Next.js kodunda API istemcisinin başlatıldığı kısmın ekran görüntüsünü (kod bloğu veya editör görünümü) ekleyebilirsin:*
-> `<p align="center"><img src="./public/media/api-code-preview.png" alt="API Entegrasyon Kodu" width="90%" /></p>`
+<p align="center">
+  <img src="./public/media/api-code-preview.png" alt="API Entegrasyon Kodu" width="90%" />
+</p>
+
+### 3. 🛰️ Uzay İstasyonu (ISS) Canlı Konum API Entegrasyonu
+* **Kullanıldığı Yer:** Uzay istasyonunun anlık yörünge ve coğrafi konum verilerini (enlem, boylam) dış kaynaklı API servisleri üzerinden anlık olarak çeken servis bileşeni.
+* **Nasıl Çalışır:** Asenkron veri çekme istekleriyle (fetch/axios) uzay istasyonunun anlık koordinatları arayüze yansıtılır.
+
+> 🌐 *Buraya ISS konum verisinin çekildiği arayüzün veya kodun ekran görüntüsünü ekleyebilirsin:*
+> `<p align="center"><img src="./public/media/iss-api-preview.png" alt="ISS Konum API Entegrasyonu" width="90%" /></p>`
 
 ---
 

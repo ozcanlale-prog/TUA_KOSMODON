@@ -24,6 +24,7 @@ export default function UzayAjansiRaporlariPage() {
       category: "technical",
       date: lang === 'en' ? "September 04, 2026" : "04 Eylül 2026",
       code: "TR-2026-OPS-09",
+      fileUrl: "/media/veriseti1.csv",
       description: lang === 'en'
         ? "During orbit stabilization tests conducted under the command of Ankara Gölbaşı Ground Station, our national satellite's positioning deviation was zeroed and stabilized to its nominal operational altitude."
         : "Ankara Gölbaşı Yer İstasyonu komutasında gerçekleştirilen yörünge sabitleme testlerinde, millî uydumuzun konumlandırma sapması sıfırlanarak nominal operasyon irtifasına sabitlendi.",
@@ -41,6 +42,7 @@ export default function UzayAjansiRaporlariPage() {
       category: "satellite",
       date: lang === 'en' ? "August 28, 2026" : "28 Ağustos 2026",
       code: "TR-2026-SAT-04",
+      fileUrl: "/media/veriseti2.csv",
       description: lang === 'en'
         ? "Initial test frames taken from high-resolution optical cameras were transferred to TÜBİTAK UZAY clean room integration laboratory using encrypted protocols and verified."
         : "Yüksek çözünürlüklü optik kameralardan alınan ilk test kareleri, TÜBİTAK UZAY temiz oda entegrasyon laboratuvarına şifreli protokollerle aktarıldı ve doğrulandı.",
@@ -58,6 +60,7 @@ export default function UzayAjansiRaporlariPage() {
       category: "deep-space",
       date: lang === 'en' ? "August 15, 2026" : "15 Ağustos 2026",
       code: "TR-2026-DS-01",
+      fileUrl: "/media/veriseti3.csv",
       description: lang === 'en'
         ? "The hybrid-fueled rocket engine prototype developed for deep space missions successfully achieved the targeted thrust force and thermal endurance in static firing tests."
         : "Derin uzay görevleri için geliştirilen hibrit yakıtlı roket motoru prototipi, statik ateşleme testlerinde hedeflenen itki kuvvetini ve termal dayanımı başarıyla sağladı.",
@@ -75,6 +78,7 @@ export default function UzayAjansiRaporlariPage() {
       category: "science",
       date: lang === 'en' ? "August 02, 2026" : "02 Ağustos 2026",
       code: "TR-2026-SCI-12",
+      fileUrl: "/media/veriseti4.csv",
       description: lang === 'en'
         ? "Samples of biological material and crystallization experiments carried out with the participation of the Turkish space traveler were safely delivered to the laboratory for analysis."
         : "Türk uzay yolcısının katılımıyla gerçekleştirilen biyolojik malzeme ve kristalleştirme deneylerinin numuneleri güvenli bir şekilde analiz edilmek üzere laboratuvara teslim edildi.",
@@ -92,6 +96,7 @@ export default function UzayAjansiRaporlariPage() {
       category: "science",
       date: lang === 'en' ? "July 20, 2026" : "20 Temmuz 2026",
       code: "TR-2026-ENV-08",
+      fileUrl: "/media/veriseti5.csv",
       description: lang === 'en'
         ? "First phase simulations of early warning algorithms established to measure the effects of solar flares and electromagnetic waves on satellite panels were completed."
         : "Güneş patlamaları ve elektromanyetik dalgaların uydu panelleri üzerindeki etkilerini ölçümlemek amacıyla kurulan erken uyarı algoritmalarının ilk faz simülasyonları tamamlandı.",
@@ -109,6 +114,7 @@ export default function UzayAjansiRaporlariPage() {
       category: "technical",
       date: lang === 'en' ? "July 10, 2026" : "10 Temmuz 2026",
       code: "TR-2026-SEC-03",
+      fileUrl: "/media/veriseti6.csv",
       description: lang === 'en'
         ? "Infrastructure requirements for ground-satellite tests of quantum key distribution (QKD) technologies, which are unlistenable and mathematically unbreakable, were reported."
         : "Dinlenemez ve kırılması matematiksel olarak imkansız olan kuantum anahtarlama (QKD) teknolojilerinin yer-uydu testleri için altyapı gereksinimleri raporlandı.",
@@ -209,12 +215,16 @@ export default function UzayAjansiRaporlariPage() {
                   </div>
                   {lang === 'en' ? "Verified Record" : "Doğrulanmış Kayıt"}
                 </span>
-                <button className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-black hover:bg-blue-600 border border-slate-900 hover:border-blue-500 text-slate-300 hover:text-white text-xs font-medium transition-all shadow-inner">
+                <a 
+                  href={report.fileUrl} 
+                  download 
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-black hover:bg-blue-600 border border-slate-900 hover:border-blue-500 text-slate-300 hover:text-white text-xs font-medium transition-all shadow-inner cursor-pointer"
+                >
                   <div className="w-5 h-5 rounded-lg bg-slate-900 flex items-center justify-center text-slate-400 shrink-0">
                     <Download className="w-3 h-3" />
                   </div>
                   {lang === 'en' ? "Download PDF" : "PDF İndir"}
-                </button>
+                </a>
               </div>
             </div>
           </div>

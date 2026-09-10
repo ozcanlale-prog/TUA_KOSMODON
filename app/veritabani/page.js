@@ -1,12 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Database, Search, ShieldCheck, FileText, Image as ImageIcon, Video, FileSpreadsheet, Download, HardDrive, Eye, X } from 'lucide-react';
 import { useLanguage } from '../components/Providers';
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-export const supabase = createClient(supabaseUrl, supabaseKey);
 
 import imgAstronaut from './media/Astronaut Watching Sunrise Above Earth _ Spacewalk 4K Wallpaper.png';
 import img12 from './media/indir (12).png';
@@ -32,97 +27,47 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Resmi Belgeler sekmesi için sabit ve yerel yollu liste
-const fixedDocuments = [
-  { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/veriseti1.csv' },
-  { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/veriseti2.csv' },
-  { id: 'DOC-003', name: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', category: 'Teknik Şartname', date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/veriseti3.csv' },
-  { id: 'DOC-004', name: 'Yörünge Mekaniği ve Çarpışma Önleme Analiz Raporu', category: 'Analiz Raporu', date: '01.08.2026', size: '9.7 MB', format: 'PDF', fileUrl: '/media/veriseti4.csv' },
-  { id: 'DOC-005', name: 'Ankara Yer İstasyonu Operasyonel El Kitabı', category: 'Operasyon', date: '05.07.2026', size: '14.2 MB', format: 'PDF', fileUrl: '/media/veriseti5.csv' },
-  { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/veriseti6.csv' }
-];
-
-// Tüm ID'leri kesin olarak projedeki public/media/ dosyalarına bağlayan harita
-const forcedLocalFiles = {
-  "IMG-012": "/media/resim1.jpeg",
-  "IMG-014": "/media/resim2.jpeg",
-  "IMG-015": "/media/resim3.jpeg",
-  "IMG-016": "/media/resim4.jpeg",
-  "IMG-017": "/media/resim5.jpeg",
-  "IMG-018": "/media/resim6.jpeg",
-  "DAT-SET-501": "/media/veriseti1.csv",
-  "DAT-SET-502": "/media/veriseti2.csv",
-  "DAT-SET-503": "/media/veriseti3.csv",
-  "DAT-SET-504": "/media/veriseti4.csv",
-  "DAT-SET-505": "/media/veriseti5.csv",
-  "DAT-SET-506": "/media/veriseti6.csv",
-  "VID-TST-301": "/media/video1.mp4",
-  "VID-TST-302": "/media/video2.mp4",
-  "VID-TST-303": "/media/video3.mp4",
-  "VID-TST-304": "/media/video4.mp4",
-  "VID-TST-305": "/media/video5.mp4",
-  "VID-TST-306": "/media/video6.mp4"
-};
-
 export default function VeritabaniPage() {
   const { lang } = useLanguage();
   const [activeTab, setActiveTab] = useState('images');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
-  const [records, setRecords] = useState({ images: [], documents: fixedDocuments, videos: [], datasets: [] });
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchRecords() {
-      try {
-        const { data, error } = await supabase.from('space_records').select('*');
-        if (error) throw error;
-
-        const categorized = { images: [], documents: [...fixedDocuments], videos: [], datasets: [] };
-        
-        if (data) {
-          data.forEach(item => {
-            // Supabase'den ne gelirse gelsin dosya yolunu kesin olarak yerel /media/ klasörüne zorla
-            const localUrl = forcedLocalFiles[item.id] || (item.id && item.id.startsWith('IMG') ? "/media/resim1.jpeg" : "/media/veriseti1.csv");
-
-            const formattedItem = {
-              id: item.id,
-              name: item.name,
-              category: item.category,
-              date: item.date,
-              size: item.size,
-              format: item.format,
-              fileUrl: localUrl, 
-              src: imageMap[item.id] || imgAstronaut,
-              description: item.name
-            };
-
-            let targetType = item.file_type;
-            if (!targetType || !categorized[targetType]) {
-              if (item.id && item.id.startsWith('IMG')) targetType = 'images';
-              else if (item.id && item.id.startsWith('DAT')) targetType = 'datasets';
-              else if (item.id && item.id.startsWith('VID')) targetType = 'videos';
-              else targetType = 'documents';
-            }
-
-            if (categorized[targetType]) {
-              if (!categorized[targetType].some(existing => existing.id === formattedItem.id)) {
-                categorized[targetType].push(formattedItem);
-              }
-            }
-          });
-        }
-
-        setRecords(categorized);
-      } catch (err) {
-        console.error('Veri çekme hatası:', err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchRecords();
-  }, []);
+  // Tüm kategoriler ve yerel dosya yolları (Anında ve hatasız yüklenir)
+  const records = {
+    images: [
+      { id: 'IMG-012', name: 'Yıldız Kümesi ve Kozmik Toz Bulutu', category: 'Astrofizik', date: '26.08.2026', size: '7.4 MB', format: 'JPEG', fileUrl: '/media/resim1.jpeg', src: img12, description: 'Yıldız Kümesi ve Kozmik Toz Bulutu yüksek çözünürlüklü uydu görseli.' },
+      { id: 'IMG-014', name: 'Jüpiter Bulut Kuşakları', category: 'Gezegenler', date: '28.08.2026', size: '5.9 MB', format: 'JPEG', fileUrl: '/media/resim2.jpeg', src: img14, description: 'Jüpiter atmosferik bulut kuşakları detaylı gözlem karesi.' },
+      { id: 'IMG-015', name: 'Ay Yüzeyi Detaylı Topografya', category: 'Uydu Yüzeyi', date: '29.08.2026', size: '4.8 MB', format: 'JPEG', fileUrl: '/media/resim3.jpeg', src: img15, description: 'Ay yüzeyi kraterleri ve detaylı topografik haritalama görseli.' },
+      { id: 'IMG-016', name: 'Halkalı Gezegen ve Uydusu', category: 'Gezegenler', date: '30.08.2026', size: '6.2 MB', format: 'JPEG', fileUrl: '/media/resim4.jpeg', src: img16, description: 'Satürn benzeri halkalı gezegen ve yörünge uydusu.' },
+      { id: 'IMG-017', name: 'Alçak Dünya Yörüngesinde Uydu Modülü', category: 'Donanım', date: '01.09.2026', size: '5.5 MB', format: 'JPEG', fileUrl: '/media/resim5.jpeg', src: img17, description: 'Alçak Dünya yörüngesinde görev yapan yerli uydu modülü.' },
+      { id: 'IMG-018', name: 'Atmosferik Siklon ve Bulut Yapılanması', category: 'Meteoroloji', date: '03.09.2026', size: '4.9 MB', format: 'JPEG', fileUrl: '/media/resim6.jpeg', src: img18, description: 'Uydu kamerasından yansıyan büyük ölçekli atmosferik siklon yapısı.' }
+    ],
+    documents: [
+      { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/veriseti1.csv' },
+      { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/veriseti2.csv' },
+      { id: 'DOC-003', name: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', category: 'Teknik Şartname', date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/veriseti3.csv' },
+      { id: 'DOC-004', name: 'Yörünge Mekaniği ve Çarpışma Önleme Analiz Raporu', category: 'Analiz Raporu', date: '01.08.2026', size: '9.7 MB', format: 'PDF', fileUrl: '/media/veriseti4.csv' },
+      { id: 'DOC-005', name: 'Ankara Yer İstasyonu Operasyonel El Kitabı', category: 'Operasyon', date: '05.07.2026', size: '14.2 MB', format: 'PDF', fileUrl: '/media/veriseti5.csv' },
+      { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/veriseti6.csv' }
+    ],
+    videos: [
+      { id: 'VID-TST-301', name: '50 kN Hibrit Roket Motoru Statik Ateşleme Testi (Tam Süre)', category: 'Test Kaydı', date: '15.08.2026', size: '1.2 GB', format: 'MP4', fileUrl: '/media/video1.mp4' },
+      { id: 'VID-TST-302', name: 'TÜRKSAT-6A Yapısal Titreşim ve Vibe Testi Simülasyonu', category: 'Mühendislik', date: '10.07.2026', size: '850 MB', format: 'MP4', fileUrl: '/media/video2.mp4' },
+      { id: 'VID-TST-303', name: 'Ankara Gölbaşı Ana Anten Otomasyon ve Sinyal Kilitlenme Anı', category: 'Sistem Kaydı', date: '01.07.2026', size: '420 MB', format: 'MP4', fileUrl: '/media/video3.mp4' },
+      { id: 'VID-TST-304', name: 'Temiz Oda Uydu Entegrasyon ve Mekanik Kol Montaj Süreci', category: 'Entegrasyon', date: '18.06.2026', size: '1.5 GB', format: 'MP4', fileUrl: '/media/video4.mp4' },
+      { id: 'VID-TST-305', name: 'Yüksek İrtifa Basınç Odası Valf Testleri ve Dayanım Analizi', category: 'Test Kaydı', date: '02.06.2026', size: '640 MB', format: 'MP4', fileUrl: '/media/video5.mp4' },
+      { id: 'VID-TST-306', name: 'Gök Olayları Gözlem Teleskobu Otomatik Konumlanma Testi', category: 'Optik Test', date: '15.05.2026', size: '510 MB', format: 'MP4', fileUrl: '/media/video6.mp4' }
+    ],
+    datasets: [
+      { id: 'DAT-SET-501', name: 'Van Allen Radyasyon Kuşağı Zaman Serisi Yoğunluk Matrisi', category: 'Bilimsel Veri', date: '06.09.2026', size: '45 MB', format: 'CSV', fileUrl: '/media/veriseti1.csv' },
+      { id: 'DAT-SET-502', name: 'GÖKTÜRK-3 İki Satırlı Yörünge Elemanları (TLE Günlük Arşivi)', category: 'Telemetri', date: '07.09.2026', size: '2.1 MB', format: 'CSV', fileUrl: '/media/veriseti2.csv' },
+      { id: 'DAT-SET-503', name: 'Ankara Yer İstasyonu Sinyal Gürültü Oranı (SNR) Kayıtları', category: 'Operasyonel', date: '05.09.2026', size: '88 MB', format: 'CSV', fileUrl: '/media/veriseti3.csv' },
+      { id: 'DAT-SET-504', name: 'Güneş Fırtınası ve Jeomanyetik Bozulma İndeks Veritabanı', category: 'Uzay Hava', date: '30.08.2026', size: '34 MB', format: 'CSV', fileUrl: '/media/veriseti4.csv' },
+      { id: 'DAT-SET-505', name: 'Hibrit Motor Yakıt Basıncı ve Sıcaklık Sensör Zaman Serileri', category: 'Mühendislik', date: '15.08.2026', size: '120 MB', format: 'CSV', fileUrl: '/media/veriseti5.csv' },
+      { id: 'DAT-SET-506', name: 'Atmosferik Gaz Yoğunluğu ve İyonosferik Katman Ölçümleri', category: 'Bilimsel Veri', date: '10.08.2026', size: '56 MB', format: 'CSV', fileUrl: '/media/veriseti6.csv' }
+    ]
+  };
 
   const tabs = [
     { id: 'images', label: lang === 'en' ? 'Satellite Images' : 'Uydu Görüntüleri', count: records.images.length, icon: ImageIcon },
@@ -219,11 +164,7 @@ export default function VeritabaniPage() {
         </div>
       </div>
 
-      {loading ? (
-        <div className="text-center py-20 text-slate-500 font-mono text-xs">
-          {lang === 'en' ? "Connecting to Supabase Database..." : "Supabase Veritabanına Bağlanılıyor..."}
-        </div>
-      ) : activeTab === 'images' ? (
+      {activeTab === 'images' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredList.map((item, idx) => (
             <div key={idx} className="bg-[#030712] border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col justify-between">
@@ -337,7 +278,7 @@ export default function VeritabaniPage() {
       <div className="bg-black border border-slate-800 px-6 py-3.5 rounded-xl mt-6 flex items-center justify-between text-[11px] text-slate-500 font-mono">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>{lang === 'en' ? "Turkish Space Agency Official Data Pool • Supabase Cloud" : "Türkiye Uzay Ajansı Resmi Veri Havuzu • Supabase Bulut"}</span>
+          <span>{lang === 'en' ? "Turkish Space Agency Official Data Pool • Local Archive" : "Türkiye Uzay Ajansı Resmi Veri Havuzu • Yerel Arşiv"}</span>
         </div>
         <span>{lang === 'en' ? "Access Permission: Public / Researcher" : "Erişim Yetkisi: Kamu / Araştırmacı"}</span>
       </div>

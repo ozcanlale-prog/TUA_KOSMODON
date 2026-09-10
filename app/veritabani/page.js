@@ -32,7 +32,7 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Tüm ID'leri (DOC, IMG, DAT, VID dahil) doğrudan projedeki yerel dosyalara bağlayan harita
+// Tüm ID'leri doğrudan projedeki yerel dosyalara bağlayan harita
 const localFileMap = {
     "DOC-001": "/media/resim1.jpeg",
     "DOC-002": "/media/resim2.jpeg",
@@ -64,7 +64,7 @@ const localFileMap = {
     "VID-TST-306": "/media/video6.mp4"
 };
 
-// Resmi Belgeler sekmesi için iki dilli sabit liste
+// Resmi Belgeler için iki dilli tam liste
 const fixedDocuments = [
   { 
     id: 'DOC-001', 
@@ -116,7 +116,7 @@ const fixedDocuments = [
   }
 ];
 
-// Uydu Görüntüleri için iki dilli sabit liste
+// Uydu Görüntüleri için iki dilli tam liste
 const fixedImages = [
   { 
     id: 'IMG-AST', 
@@ -220,7 +220,7 @@ const fixedImages = [
   }
 ];
 
-// Ham Veri Setleri için iki dilli sabit liste
+// Ham Veri Setleri için iki dilli tam liste
 const fixedDatasets = [
   { 
     id: 'DAT-SET-501', 
@@ -272,7 +272,7 @@ const fixedDatasets = [
   }
 ];
 
-// Videolar için iki dilli sabit liste
+// Videolar için iki dilli tam liste
 const fixedVideos = [
   { 
     id: 'VID-TST-301', 

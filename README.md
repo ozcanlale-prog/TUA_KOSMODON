@@ -24,7 +24,11 @@
 
 ## 📸 Arayüz & Görsel Önizlemeler
 
-> *Platformun farklı modüllerinden ve kurumsal tasarım çizgilerinden detay kareler:*
+> <img width="1905" height="1079" alt="Ekran görüntüsü 2026-09-10 163427" src="https://github.com/user-attachments/assets/ac2e0267-01d7-483f-bf78-fbad796549f2" />
+<img width="1906" height="1079" alt="Ekran görüntüsü 2026-09-10 163438" src="https://github.com/user-attachments/assets/a9c269d9-f9de-4b53-b243-f41f1973458a" />
+<img width="1906" height="1079" alt="Ekran görüntüsü 2026-09-10 163449" src="https://github.com/user-attachments/assets/a54bfd6d-f835-4db2-9927-3f6466169388" />
+<img width="1904" height="1079" alt="Ekran görüntüsü 2026-09-10 165805" src="https://github.com/user-attachments/assets/5e6e0dc0-95a6-4a55-8b53-ea0f42bbdd6f" />
+
 
 <p align="center">
   <img src="./public/media/homepage-preview.png" alt="Ana Sayfa Görünümü" width="48%" />

@@ -49,6 +49,15 @@ export default function VeritabaniPage() {
         const categorized = { images: [], documents: [], videos: [], datasets: [] };
         
         data.forEach(item => {
+          // Google Drive view linkini doğrudan indirme linkine güvenli bir şekilde dönüştürüyoruz
+          let downloadUrl = item.file_url;
+          if (downloadUrl && downloadUrl.includes('/file/d/')) {
+            const fileIdMatch = downloadUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+            if (fileIdMatch && fileIdMatch[1]) {
+              downloadUrl = `https://drive.google.com/uc?export=download&id=${fileIdMatch[1]}`;
+            }
+          }
+
           const formattedItem = {
             id: item.id,
             name: item.name,
@@ -56,7 +65,7 @@ export default function VeritabaniPage() {
             date: item.date,
             size: item.size,
             format: item.format,
-            fileUrl: item.file_url,
+            fileUrl: downloadUrl,
             src: imageMap[item.id] || imgAstronaut,
             description: item.name
           };
@@ -122,7 +131,7 @@ export default function VeritabaniPage() {
         </div>
       </div>
 
-      {/* Kategori Sekmeleri (Başta Uydu Görüntüleri) */}
+      {/* Kategori Sekmeleri */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {tabs.map((tab) => {
           const IconComp = tab.icon;
@@ -218,12 +227,14 @@ export default function VeritabaniPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-slate-800/80 font-mono text-[11px]">
                   <span className="text-slate-400">{item.size} • <strong className="text-blue-400">{item.format}</strong></span>
-                  <button 
-                    onClick={() => setSelectedImage(item)}
+                  <a 
+                    href={item.fileUrl} 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner"
                   >
                     <Download className="w-3 h-3" /> {lang === 'en' ? "Inspect" : "İncele"}
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -271,7 +282,6 @@ export default function VeritabaniPage() {
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
                   <a 
                     href={item.fileUrl} 
-                    download 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all"

@@ -32,8 +32,8 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Veritabanında bulunmayan "Resmi Belgeler" için yedek liste (Yerel dosya yollarıyla)
-const fallbackDocuments = [
+// Resmi Belgeler için doğrudan kod içine gömülü sabit ve eksiksiz liste
+const fixedDocuments = [
   { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/veriseti1.csv' },
   { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/veriseti2.csv' },
   { id: 'DOC-003', name: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', category: 'Teknik Şartname', date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/veriseti3.csv' },
@@ -42,7 +42,6 @@ const fallbackDocuments = [
   { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/veriseti6.csv' }
 ];
 
-// Supabase'den gelen drive linklerini projedeki local dosyalara çeviren eşleme haritası
 const localFileMap = {
   "IMG-012": "/media/resim1.jpeg",
   "IMG-014": "/media/resim2.jpeg",
@@ -69,7 +68,7 @@ export default function VeritabaniPage() {
   const [activeTab, setActiveTab] = useState('images');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
-  const [records, setRecords] = useState({ images: [], documents: fallbackDocuments, videos: [], datasets: [] });
+  const [records, setRecords] = useState({ images: [], documents: fixedDocuments, videos: [], datasets: [] });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -78,7 +77,7 @@ export default function VeritabaniPage() {
         const { data, error } = await supabase.from('space_records').select('*');
         if (error) throw error;
 
-        const categorized = { images: [], documents: [...fallbackDocuments], videos: [], datasets: [] };
+        const categorized = { images: [], documents: [...fixedDocuments], videos: [], datasets: [] };
         
         if (data) {
           data.forEach(item => {
@@ -89,7 +88,7 @@ export default function VeritabaniPage() {
               date: item.date,
               size: item.size,
               format: item.format,
-              fileUrl: localFileMap[item.id] || item.file_url, // Drive linki yerine doğrudan local dosya yolu
+              fileUrl: localFileMap[item.id] || item.file_url,
               src: imageMap[item.id] || imgAstronaut,
               description: item.name
             };

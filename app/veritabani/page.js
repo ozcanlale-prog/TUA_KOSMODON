@@ -32,8 +32,14 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Tüm ID'leri doğru yerel dosya yollarına eşleyen harita
+// Tüm ID'leri (DOC, IMG, DAT, VID dahil) doğrudan projedeki yerel dosyalara bağlayan harita
 const localFileMap = {
+    "DOC-001": "/media/resim1.jpeg",
+    "DOC-002": "/media/resim2.jpeg",
+    "DOC-003": "/media/resim3.jpeg",
+    "DOC-004": "/media/resim4.jpeg",
+    "DOC-005": "/media/resim5.jpeg",
+    "DOC-006": "/media/resim6.jpeg",
     "IMG-012": "/media/resim1.jpeg",
     "IMG-014": "/media/resim2.jpeg",
     "IMG-015": "/media/resim3.jpeg",
@@ -54,7 +60,7 @@ const localFileMap = {
     "VID-TST-306": "/media/video6.mp4"
 };
 
-// Resmi Belgeler sekmesi için doğru yerel dosya yollarına sahip liste
+// Resmi Belgeler sekmesi için sabit liste
 const fixedDocuments = [
   { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/resim1.jpeg' },
   { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/resim2.jpeg' },
@@ -166,7 +172,7 @@ export default function VeritabaniPage() {
         </div>
       </div>
 
-      {/* Kategori Sekmeleri (Başta Uydu Görüntüleri) */}
+      {/* Kategori Sekmeleri */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {tabs.map((tab) => {
           const IconComp = tab.icon;

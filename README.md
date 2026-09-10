@@ -14,7 +14,11 @@
 ---
 
 ##  Proje Tanıtım Videosu & Canlı Akış
-> *Aşağıdaki video kaydında projenin modern arayüz tasarımı, akıcı tema geçişleri, veritabanı sekmeleri arası geçişler ve modal önizleme özellikleri çalışırken gösterilmektedir.*
+>
+
+https://github.com/user-attachments/assets/5e158d28-d057-48a7-a523-8a8a9d677c9f
+
+
 
 <p align="center">
   <img src="./public/media/demo-video.gif" alt="TUA Kosmodon Tanıtım Videosu" width="100%" />

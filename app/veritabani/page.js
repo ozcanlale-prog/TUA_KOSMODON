@@ -32,7 +32,7 @@ const imageMap = {
     "IMG-021": img21,
 };
 
-// Tüm ID'leri doğru yerel dosya yollarına eşleyen harita (Resimler için resimX.jpeg)
+// Tüm ID'leri doğru yerel dosya yollarına eşleyen harita
 const localFileMap = {
     "IMG-012": "/media/resim1.jpeg",
     "IMG-014": "/media/resim2.jpeg",
@@ -54,14 +54,14 @@ const localFileMap = {
     "VID-TST-306": "/media/video6.mp4"
 };
 
-// Resmi Belgeler sekmesi boş kalmasın diye yedek liste
+// Resmi Belgeler sekmesi için doğru yerel dosya yollarına sahip liste
 const fixedDocuments = [
-  { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/veriseti1.csv' },
-  { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/veriseti2.csv' },
-  { id: 'DOC-003', name: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', category: 'Teknik Şartname', date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/veriseti3.csv' },
-  { id: 'DOC-004', name: 'Yörünge Mekaniği ve Çarpışma Önleme Analiz Raporu', category: 'Analiz Raporu', date: '01.08.2026', size: '9.7 MB', format: 'PDF', fileUrl: '/media/veriseti4.csv' },
-  { id: 'DOC-005', name: 'Ankara Yer İstasyonu Operasyonel El Kitabı', category: 'Operasyon', date: '05.07.2026', size: '14.2 MB', format: 'PDF', fileUrl: '/media/veriseti5.csv' },
-  { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/veriseti6.csv' }
+  { id: 'DOC-001', name: 'Türkiye Uzay Ajansı 2026-2030 Stratejik Planı', category: 'Stratejik Plan', date: '10.08.2026', size: '8.5 MB', format: 'PDF', fileUrl: '/media/resim1.jpeg' },
+  { id: 'DOC-002', name: 'Yapay Zeka Destekli Uydu Veri Analitiği Raporu', category: 'Araştırma', date: '15.08.2026', size: '11.4 MB', format: 'PDF', fileUrl: '/media/resim2.jpeg' },
+  { id: 'DOC-003', name: 'Milli Gözlem Uydusu Optik Sistem Teknik Şartnamesi', category: 'Teknik Şartname', date: '20.07.2026', size: '6.1 MB', format: 'PDF', fileUrl: '/media/resim3.jpeg' },
+  { id: 'DOC-004', name: 'Yörünge Mekaniği ve Çarpışma Önleme Analiz Raporu', category: 'Analiz Raporu', date: '01.08.2026', size: '9.7 MB', format: 'PDF', fileUrl: '/media/resim4.jpeg' },
+  { id: 'DOC-005', name: 'Ankara Yer İstasyonu Operasyonel El Kitabı', category: 'Operasyon', date: '05.07.2026', size: '14.2 MB', format: 'PDF', fileUrl: '/media/resim5.jpeg' },
+  { id: 'DOC-006', name: 'Derin Uzay İletişim Protokolleri ve Güvenlik Standardı', category: 'Bilimsel', date: '12.06.2026', size: '5.3 MB', format: 'PDF', fileUrl: '/media/resim6.jpeg' }
 ];
 
 export default function VeritabaniPage() {

@@ -122,7 +122,7 @@ export default function VeritabaniPage() {
         </div>
       </div>
 
-      {/* Kategori Sekmeleri */}
+      {/* Kategori Sekmeleri (Başta Uydu Görüntüleri) */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {tabs.map((tab) => {
           const IconComp = tab.icon;
@@ -271,6 +271,7 @@ export default function VeritabaniPage() {
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
                   <a 
                     href={item.fileUrl} 
+                    download 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all"

@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Providers from './components/Providers';
-import Script from 'next/script'; // <-- Script bileşenini import ediyoruz
+import Script from 'next/script';
 import './globals.css';
 
 export const metadata = {
@@ -9,9 +9,6 @@ export const metadata = {
   description: 'Türkiye Uzay Ajansı Vizyonuyla Dijital Bilgi Ağı, Millî Uzay Programı ve Uzay Teknolojileri Platformu',
   keywords: ['TUA', 'Türkiye Uzay Ajansı', 'Kosmodon', 'Uzay Portalı', 'Millî Uzay Programı', 'Alper Gezeravcı', 'Tuva Cihangir Atasever', 'Kutup Yıldızı AI'],
   authors: [{ name: 'TUA KOSMODON Ekibi' }],
-  verification: {
-    google: 'XXKtdxPAFKEZL10T3rXrrhXO4gGjzU8p5Gjx3OM435w',
-  },
   openGraph: {
     title: 'TUA KOSMODON | Ulusal Uzay Portalı',
     description: 'Türkiye Uzay Ajansı Vizyonuyla Dijital Bilgi Ağı ve Akıllı Uzay Asistanı',
@@ -30,6 +27,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
+      <head>
+        <meta name="google-site-verification" content="XXKtdxPAFKEZL10T3rXrrhXO4gGjzU8p5Gjx3OM435w" />
+      </head>
       <body className="bg-black text-white relative">
         <Providers>
           {/* --- index.html'den Alınan Derin Uzay Yıldız Efektleri --- */}

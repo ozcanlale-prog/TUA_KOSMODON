@@ -49,12 +49,11 @@ export default function VeritabaniPage() {
         const categorized = { images: [], documents: [], videos: [], datasets: [] };
         
         data.forEach(item => {
-          // Google Drive view linkini doğrudan indirme linkine güvenli bir şekilde dönüştürüyoruz
-          let downloadUrl = item.file_url;
-          if (downloadUrl && downloadUrl.includes('/file/d/')) {
-            const fileIdMatch = downloadUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-            if (fileIdMatch && fileIdMatch[1]) {
-              downloadUrl = `https://drive.google.com/uc?export=download&id=${fileIdMatch[1]}`;
+          let directUrl = item.file_url;
+          if (directUrl && directUrl.includes('/file/d/')) {
+            const match = directUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+            if (match && match[1]) {
+              directUrl = `https://drive.google.com/uc?export=download&id=${match[1]}`;
             }
           }
 
@@ -65,7 +64,7 @@ export default function VeritabaniPage() {
             date: item.date,
             size: item.size,
             format: item.format,
-            fileUrl: downloadUrl,
+            fileUrl: directUrl,
             src: imageMap[item.id] || imgAstronaut,
             description: item.name
           };
@@ -85,6 +84,16 @@ export default function VeritabaniPage() {
 
     fetchRecords();
   }, []);
+
+  // Güvenli indirme tetikleyici fonksiyon
+  const handleDownload = (e, url) => {
+    e.preventDefault();
+    if (!url) return;
+    const win = window.open(url, '_blank');
+    if (!win) {
+      window.location.href = url;
+    }
+  };
 
   const tabs = [
     { id: 'images', label: lang === 'en' ? 'Satellite Images' : 'Uydu Görüntüleri', count: records.images.length, icon: ImageIcon },
@@ -227,14 +236,12 @@ export default function VeritabaniPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-slate-800/80 font-mono text-[11px]">
                   <span className="text-slate-400">{item.size} • <strong className="text-blue-400">{item.format}</strong></span>
-                  <a 
-                    href={item.fileUrl} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner"
+                  <button 
+                    onClick={(e) => handleDownload(e, item.fileUrl)}
+                    className="px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-1.5 shadow-inner cursor-pointer"
                   >
-                    <Download className="w-3 h-3" /> {lang === 'en' ? "Inspect" : "İncele"}
-                  </a>
+                    <Download className="w-3 h-3" /> {lang === 'en' ? "Download" : "İndir"}
+                  </button>
                 </div>
               </div>
 
@@ -280,15 +287,13 @@ export default function VeritabaniPage() {
                 </div>
 
                 <div className="col-span-2 text-right flex items-center justify-end gap-2">
-                  <a 
-                    href={item.fileUrl} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all"
+                  <button 
+                    onClick={(e) => handleDownload(e, item.fileUrl)}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-blue-600 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white text-[11px] transition-all cursor-pointer"
                   >
                     <Download className="w-3 h-3 text-slate-400" />
                     {lang === 'en' ? "Download" : "İndir"}
-                  </a>
+                  </button>
                 </div>
 
               </div>

@@ -32,6 +32,38 @@ const imageMap = {
     "IMG-021": img21,
 };
 
+// Kategori çeviri sözlüğü (İngilizce mod desteği için)
+const categoryTranslations = {
+  'Stratejik Plan': 'Strategic Plan',
+  'Araştırma': 'Research',
+  'Teknik Şartname': 'Technical Specification',
+  'Analiz Raporu': 'Analysis Report',
+  'Operasyon': 'Operations',
+  'Bilimsel': 'Scientific',
+  'Yörünge Görseli': 'Orbit Visual',
+  'Termal Analiz': 'Thermal Analysis',
+  'Oşinografi': 'Oceanography',
+  'Tarım & Çevre': 'Agriculture & Environment',
+  'Kıyı Yapısı': 'Coastal Structure',
+  'Hidroloji': 'Hydrology',
+  'Denetim': 'Inspection',
+  'Jeoloji': 'Geology',
+  'Kentsel Analiz': 'Urban Analysis',
+  'Uzay Hava Durumu': 'Space Weather',
+  'Yörünge Verisi': 'Orbit Data',
+  'Atmosfer': 'Atmosphere',
+  'Telemetri': 'Telemetry',
+  'Mühendislik': 'Engineering',
+  'Sensör': 'Sensor',
+  'Radyasyon': 'Radiation',
+  'Tahrik Testi': 'Propulsion Test',
+  'Mekanik Test': 'Mechanical Test',
+  'Fırlatma': 'Launch',
+  'Çevresel Test': 'Environmental Test',
+  'Yer Sistemleri': 'Ground Systems',
+  'Konferans': 'Conference'
+};
+
 // Tüm ID'leri (DOC, IMG, DAT, VID dahil) doğrudan projedeki yerel dosyalara bağlayan harita
 const localFileMap = {
     "DOC-001": "/media/resim1.jpeg",
@@ -175,6 +207,14 @@ export default function VeritabaniPage() {
     fetchRecords();
   }, []);
 
+  // Kategori adını dile göre çeviren yardımcı fonksiyon
+  const getCategoryLabel = (category) => {
+    if (lang === 'en' && categoryTranslations[category]) {
+      return categoryTranslations[category];
+    }
+    return category;
+  };
+
   const tabs = [
     { id: 'images', label: lang === 'en' ? 'Satellite Images' : 'Uydu Görüntüleri', count: records.images.length, icon: ImageIcon },
     { id: 'documents', label: lang === 'en' ? 'Official Documents & Reports' : 'Resmi Belgeler & Raporlar', count: records.documents.length, icon: FileText },
@@ -302,7 +342,7 @@ export default function VeritabaniPage() {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-mono text-slate-400 bg-black px-2 py-0.5 rounded border border-slate-800">
-                      {item.category}
+                      {getCategoryLabel(item.category)}
                     </span>
                     <span className="text-[10px] font-mono text-slate-500">{item.date}</span>
                   </div>
@@ -355,7 +395,7 @@ export default function VeritabaniPage() {
 
                 <div className="col-span-2 text-slate-400">
                   <span className="px-2 py-0.5 rounded bg-black border border-slate-800 text-[10px]">
-                    {item.category}
+                    {getCategoryLabel(item.category)}
                   </span>
                 </div>
 

@@ -154,4 +154,8 @@ https://github.com/user-attachments/assets/b788ea9a-604a-4c1d-8bd4-a571ba63bb92
 | **Hosting & CI/CD** | Vercel | Otomatik GitHub entegrasyonlu bulut dağıtım altyapısı |
 
 ---
-
+---
+---
+---
+---
+---
